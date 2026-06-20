@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Resume Templates — PureFreeCV</title>
+<meta name="description" content="Browse 15 free ATS-optimised resume templates. See full previews with real content. Choose your favourite and build your CV instantly.">
+<link rel="canonical" href="https://purefreecv.online/templates.html">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --gold:#c8900a;--navy:#1a2b4a;--bg:#f5f4f0;--white:#fff;
+  --text:#1a1a1a;--text2:#666;--border:#e8e6e0;
+  --radius:12px;--shadow:0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg:0 8px 32px rgba(0,0,0,0.14);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* NAV */
+.nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);}
+.nav-logo{font-size:1.1rem;font-weight:800;color:var(--navy);text-decoration:none;letter-spacing:-0.03em;}
+.nav-logo span{color:var(--gold);}
+.nav-btn{background:var(--gold);color:#fff;border:none;padding:9px 20px;border-radius:8px;font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:700;cursor:pointer;text-decoration:none;transition:opacity 0.2s;}
+.nav-btn:hover{opacity:0.88;}
+
+/* HERO */
+.hero{text-align:center;padding:52px 20px 36px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:700;color:var(--navy);letter-spacing:-0.02em;margin-bottom:12px;}
+.hero h1 em{color:var(--gold);font-style:italic;}
+.hero p{font-size:0.95rem;color:var(--text2);max-width:520px;margin:0 auto 28px;}
+.badge-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+.badge{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:5px 14px;font-size:0.75rem;font-weight:600;color:var(--text2);}
+.badge.gold{border-color:rgba(200,144,10,0.4);color:var(--gold);background:#fffbf0;}
+
+/* FILTER TABS */
+.filters{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:0 20px 32px;}
+.filter-btn{padding:8px 18px;border-radius:20px;border:1.5px solid var(--border);background:var(--white);font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:600;color:var(--text2);cursor:pointer;transition:all 0.18s;}
+.filter-btn:hover,.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+/* GRID */
+.templates-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px;max-width:1200px;margin:0 auto;padding:0 24px 60px;}
+
+/* CARD */
+.tmpl-card{background:var(--white);border-radius:var(--radius);border:1.5px solid var(--border);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;cursor:pointer;}
+.tmpl-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--gold);}
+.tmpl-card.selected{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,144,10,0.15);}
+
+/* PREVIEW WINDOW */
+.preview-window{width:100%;height:420px;overflow:hidden;position:relative;background:#f9f9f9;border-bottom:1px solid var(--border);}
+.preview-scale{width:794px;transform-origin:top left;position:absolute;top:0;left:0;}
+.preview-overlay{position:absolute;inset:0;z-index:2;}
+
+/* CARD FOOTER */
+.card-footer{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.card-meta{flex:1;}
+.card-name{font-size:0.85rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:0.06em;}
+.card-tag{font-size:0.7rem;color:var(--text2);margin-top:2px;}
+.card-tag.pro{color:var(--gold);font-weight:600;}
+.use-btn{background:var(--navy);color:#fff;border:none;padding:9px 16px;border-radius:8px;font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:background 0.18s;text-decoration:none;display:inline-block;}
+.use-btn:hover{background:var(--gold);}
+
+/* BOTTOM CTA */
+.bottom-cta{text-align:center;padding:40px 20px 60px;background:var(--navy);color:#fff;}
+.bottom-cta h2{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:10px;}
+.bottom-cta p{color:rgba(255,255,255,0.7);font-size:0.9rem;margin-bottom:24px;}
+.cta-btn{background:var(--gold);color:#fff;border:none;padding:14px 32px;border-radius:10px;font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;transition:opacity 0.2s;}
+.cta-btn:hover{opacity:0.88;}
+
+/* ═══════════════════════════════
+   ALL RESUME TEMPLATE STYLES
+   (copied from main app)
+═══════════════════════════════ */
+.resume-paper{width:794px;min-height:1122px;background:#fff;font-family:'Inter',sans-serif;font-size:0.88rem;color:#222;line-height:1.5;}
+
+/* SHARED */
+.rh{} .rbody{} .rmain{} .rside{}
+.rsec{margin-bottom:20px;}
+.rsec-title{font-size:0.6rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px;}
+.rentry{margin-bottom:13px;}
+.rentry-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;}
+.rentry-title{font-weight:700;font-size:0.88rem;color:#111;}
+.rentry-date{font-size:0.7rem;color:#999;white-space:nowrap;}
+.rentry-sub{font-size:0.77rem;font-weight:600;margin-top:2px;}
+.rentry-desc{font-size:0.78rem;color:#555;margin-top:5px;line-height:1.55;}
+.rbullet{font-size:0.77rem;color:#444;margin-top:4px;padding-left:12px;position:relative;}
+.rbullet::before{content:'·';position:absolute;left:0;color:#999;}
+.rskills{display:flex;flex-wrap:wrap;gap:6px;}
+.rskill{padding:4px 11px;border-radius:20px;font-size:0.74rem;font-weight:600;}
+
+/* ATS PROFESSIONAL */
+.tmpl-ats{background:#fff;}
+.tmpl-ats .rh{padding:32px 44px 20px;border-bottom:2px solid #1a2b4a;text-align:center;}
+.tmpl-ats .rname{font-size:1.9rem;font-weight:800;color:#1a2b4a;letter-spacing:-0.03em;}
+.tmpl-ats .rtitle{font-size:0.8rem;color:#555;margin-top:5px;letter-spacing:0.1em;text-transform:uppercase;}
+.tmpl-ats .rcontact{display:flex;justify-content:center;gap:16px;margin-top:10px;font-size:0.74rem;color:#777;flex-wrap:wrap;}
+.tmpl-ats .rbody{padding:24px 44px 44px;}
+.tmpl-ats .rsec-title{color:#1a2b4a;border-bottom:1.5px solid #1a2b4a;padding-bottom:3px;margin-bottom:10px;}
+.tmpl-ats .rentry-sub{color:#1a2b4a;}
+.tmpl-ats .rsummary{font-size:0.82rem;color:#444;line-height:1.6;margin-bottom:20px;padding:12px 16px;background:#f8f8f8;border-left:3px solid #1a2b4a;border-radius:0 6px 6px 0;}
+.tmpl-ats .rskill{background:#f0f2f5;border:1px solid #dde1e8;color:#1a2b4a;border-radius:4px;}
+
+/* EXECUTIVE */
+.tmpl-executive .rh{background:#1a2b4a;padding:0;}
+.tmpl-executive .rh-inner{display:flex;align-items:center;gap:22px;padding:32px 44px;}
+.tmpl-executive .rh-text{flex:1;}
+.tmpl-executive .rname{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;letter-spacing:-0.02em;line-height:1;color:#fff;}
+.tmpl-executive .rtitle{font-size:0.78rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-top:7px;}
+.tmpl-executive .rcontact-bar{display:flex;gap:0;background:rgba(0,0,0,0.2);border-top:1px solid rgba(255,255,255,0.1);}
+.tmpl-executive .rcontact-item{padding:8px 18px;font-size:0.72rem;color:rgba(255,255,255,0.8);border-right:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;gap:5px;}
+.tmpl-executive .rcontact-item:last-child{border-right:none;}
+.tmpl-executive .rbody{display:grid;grid-template-columns:1fr 240px;min-height:900px;}
+.tmpl-executive .rmain{padding:26px 32px 40px;}
+.tmpl-executive .rside{background:#f8f7f4;border-left:1px solid #eee;padding:26px 22px 40px;}
+.tmpl-executive .rsec{margin-bottom:22px;}
+.tmpl-executive .rsec-title{font-size:0.6rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#1a2b4a;margin-bottom:11px;display:flex;align-items:center;gap:8px;}
+.tmpl-executive .rsec-title::after{content:'';flex:1;height:2px;background:#1a2b4a;opacity:0.2;}
+.tmpl-executive .rentry-sub{color:#1a2b4a;}
+.tmpl-executive .rskill{background:#fff;border:1.5px solid #1a2b4a;color:#1a2b4a;}
+
+/* VELOCITY (Modern) */
+.tmpl-velocity .rh{background:#1d4ed8;padding:0;}
+.tmpl-velocity .rh-inner{display:flex;align-items:center;gap:22px;padding:28px 36px 28px 44px;}
+.tmpl-velocity .rh-text{flex:1;}
+.tmpl-velocity .rname{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:#fff;letter-spacing:-0.02em;}
+.tmpl-velocity .rtitle-wrap{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;}
+.tmpl-velocity .rtitle-tag{background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:3px 11px;font-size:0.73rem;color:#fff;font-weight:600;}
+.tmpl-velocity .rcontact{display:flex;gap:16px;margin-top:13px;flex-wrap:wrap;}
+.tmpl-velocity .rcontact span{font-size:0.73rem;color:rgba(255,255,255,0.8);display:flex;align-items:center;gap:4px;}
+.tmpl-velocity .rbody{display:grid;grid-template-columns:1fr 230px;}
+.tmpl-velocity .rmain{padding:24px 32px 40px;}
+.tmpl-velocity .rside{background:#f5f3ff;padding:24px 20px 40px;border-left:1px solid #e8e4ff;}
+.tmpl-velocity .rsec-title{color:#1d4ed8;padding-bottom:5px;border-bottom:2px solid #1d4ed8;}
+.tmpl-velocity .rentry-sub{color:#1d4ed8;}
+.tmpl-velocity .rskill{font-size:0.77rem;color:#444;padding:5px 0;border-bottom:1px solid #e8e4ff;background:none;border-radius:0;display:flex;align-items:center;gap:6px;}
+.tmpl-velocity .rskill::before{content:'';width:6px;height:6px;border-radius:50%;background:#1d4ed8;flex-shrink:0;}
+
+/* CANVAS (Creative) */
+.tmpl-canvas .rh{display:grid;grid-template-columns:210px 1fr;}
+.tmpl-canvas .rh-left{background:#059669;padding:30px 20px 24px;display:flex;flex-direction:column;align-items:center;gap:16px;}
+.tmpl-canvas .rh-right{padding:28px 36px;background:#fff;border-bottom:2px solid #059669;}
+.tmpl-canvas .rname{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#111;letter-spacing:-0.02em;line-height:1.1;}
+.tmpl-canvas .rtitle{font-size:0.78rem;color:#059669;font-weight:700;margin-top:6px;letter-spacing:0.05em;text-transform:uppercase;}
+.tmpl-canvas .rcontact{display:flex;gap:14px;flex-wrap:wrap;margin-top:11px;font-size:0.73rem;color:#777;}
+.tmpl-canvas .rbody{display:grid;grid-template-columns:210px 1fr;}
+.tmpl-canvas .rside{background:#f0faf6;padding:22px 20px 40px;}
+.tmpl-canvas .rmain{padding:22px 36px 40px;}
+.tmpl-canvas .rsec-title{color:#fff;background:#059669;padding:4px 10px;border-radius:3px;margin-bottom:10px;display:inline-block;}
+.tmpl-canvas .rentry-sub{color:#059669;}
+.tmpl-canvas .photo-placeholder{width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.25);border:3px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;font-size:28px;}
+.tmpl-canvas .rskill{font-size:0.77rem;color:rgba(255,255,255,0.9);padding:5px 9px;background:rgba(255,255,255,0.15);border-radius:5px;border:1px solid rgba(255,255,255,0.25);}
+
+/* NORDIC (Fresher) */
+.tmpl-nordic .rh{padding:44px 52px 28px;display:flex;align-items:flex-start;gap:24px;border-bottom:3px solid #111;}
+.tmpl-nordic .rh-text{flex:1;}
+.tmpl-nordic .rname{font-size:2.6rem;font-weight:300;letter-spacing:-0.05em;color:#111;}
+.tmpl-nordic .rname strong{font-weight:800;}
+.tmpl-nordic .rtitle{font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;color:#aaa;margin-top:6px;}
+.tmpl-nordic .rcontact{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:0.73rem;color:#888;}
+.tmpl-nordic .rbody{padding:28px 52px 48px;display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+.tmpl-nordic .rsec-title{color:#111;padding-bottom:5px;border-bottom:2px solid #111;}
+.tmpl-nordic .rentry{margin-bottom:14px;padding-left:13px;border-left:2px solid #111;}
+.tmpl-nordic .rentry-sub{color:#777;}
+.tmpl-nordic .rskill{border:1.5px solid #111;color:#111;background:none;}
+
+/* BOLD */
+.tmpl-bold .rh{padding:0;background:#fff;}
+.tmpl-bold .rh-top{background:#111;padding:32px 44px;display:flex;align-items:center;gap:22px;}
+.tmpl-bold .rh-text{flex:1;}
+.tmpl-bold .rname{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1;}
+.tmpl-bold .rtitle{font-size:0.8rem;color:rgba(255,255,255,0.55);margin-top:7px;letter-spacing:0.12em;text-transform:uppercase;}
+.tmpl-bold .rcontact-row{display:flex;gap:0;background:#f5f5f5;border-bottom:1px solid #e8e8e8;}
+.tmpl-bold .rcontact-item{padding:9px 18px;font-size:0.72rem;color:#555;border-right:1px solid #e0e0e0;display:flex;align-items:center;gap:5px;}
+.tmpl-bold .rbody{padding:28px 44px 44px;}
+.tmpl-bold .rsec-title{color:#111;padding-bottom:3px;border-bottom:2px solid #111;}
+.tmpl-bold .rentry-sub{color:#555;}
+.tmpl-bold .rskill{background:#f5f5f5;border:1px solid #e0e0e0;color:#333;border-radius:4px;}
+
+/* CORAL */
+.tmpl-coral .rh{display:grid;grid-template-columns:220px 1fr;}
+.tmpl-coral .rh-left{background:#c0392b;padding:30px 20px 24px;display:flex;flex-direction:column;gap:12px;}
+.tmpl-coral .rh-right{padding:28px 36px;background:#fff;border-bottom:2px solid #fde8e4;}
+.tmpl-coral .rname{font-family:'Playfair Display',serif;font-size:1.95rem;font-weight:700;color:#111;letter-spacing:-0.02em;}
+.tmpl-coral .rtitle{font-size:0.77rem;color:#c0392b;font-weight:700;margin-top:5px;letter-spacing:0.05em;text-transform:uppercase;}
+.tmpl-coral .rcontact{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:0.73rem;color:#777;}
+.tmpl-coral .rbody{display:grid;grid-template-columns:220px 1fr;}
+.tmpl-coral .rside{background:#fef9f8;border-left:1px solid #fde8e4;padding:22px 20px 40px;}
+.tmpl-coral .rmain{padding:22px 36px 40px;}
+.tmpl-coral .rsec-title{color:#c0392b;border-bottom:2px solid #c0392b;padding-bottom:4px;}
+.tmpl-coral .rentry-sub{color:#c0392b;}
+.tmpl-coral .rskill{background:#fff;border:1.5px solid rgba(192,57,43,0.3);color:#c0392b;border-radius:15px;}
+.tmpl-coral .side-label{font-size:0.6rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:8px;}
+.tmpl-coral .side-item{font-size:0.77rem;color:rgba(255,255,255,0.9);padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.15);}
+
+/* SLATE */
+.tmpl-slate .rh{background:linear-gradient(135deg,#2d3748,#4a5568);padding:0;}
+.tmpl-slate .rh-inner{display:flex;align-items:center;gap:22px;padding:30px 44px;}
+.tmpl-slate .rh-text{flex:1;}
+.tmpl-slate .rname{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:#fff;letter-spacing:-0.02em;}
+.tmpl-slate .rtitle{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:7px;}
+.tmpl-slate .rcontact{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;}
+.tmpl-slate .rcontact span{font-size:0.73rem;color:rgba(255,255,255,0.7);}
+.tmpl-slate .rbody{display:grid;grid-template-columns:1fr 230px;}
+.tmpl-slate .rmain{padding:24px 36px 40px;}
+.tmpl-slate .rside{background:#f7f8fa;border-left:1px solid #e8eaf0;padding:24px 20px 40px;}
+.tmpl-slate .rsec-title{color:#2d3748;display:flex;align-items:center;gap:8px;}
+.tmpl-slate .rsec-title::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.tmpl-slate .rentry-sub{color:#4a5568;}
+.tmpl-slate .rskill{background:#edf2f7;border:1px solid #e2e8f0;color:#4a5568;border-radius:4px;}
+
+/* MINT */
+.tmpl-mint .rh{display:grid;grid-template-columns:220px 1fr;}
+.tmpl-mint .rh-left{background:#0d9488;padding:28px 20px 24px;display:flex;flex-direction:column;align-items:center;gap:14px;}
+.tmpl-mint .rh-right{padding:28px 36px;background:#fff;border-bottom:2px solid #cffcf8;}
+.tmpl-mint .rname{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:#111;letter-spacing:-0.02em;}
+.tmpl-mint .rtitle{font-size:0.76rem;color:#0d9488;font-weight:700;margin-top:5px;letter-spacing:0.06em;text-transform:uppercase;}
+.tmpl-mint .rcontact{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:0.72rem;color:#777;}
+.tmpl-mint .rbody{display:grid;grid-template-columns:220px 1fr;}
+.tmpl-mint .rside{background:#e0fdfa;padding:20px 18px 40px;}
+.tmpl-mint .rmain{padding:22px 36px 40px;}
+.tmpl-mint .rsec-title{color:#0d9488;border-bottom:2px solid #0d9488;padding-bottom:4px;}
+.tmpl-mint .rentry-sub{color:#0d9488;}
+.tmpl-mint .rskill{font-size:0.79rem;color:#555;padding:4px 0;border-bottom:1px solid #d5f5f2;background:none;border-radius:0;}
+
+/* VIOLET */
+.tmpl-violet .rh{background:#7c3aed;padding:40px 48px 32px;position:relative;overflow:hidden;}
+.tmpl-violet .rh::before{content:'';position:absolute;right:-60px;top:-60px;width:200px;height:200px;background:rgba(255,255,255,0.07);border-radius:50%;}
+.tmpl-violet .rname{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:#fff;letter-spacing:-0.02em;position:relative;}
+.tmpl-violet .rtitle{font-size:0.85rem;color:rgba(255,255,255,0.7);margin-top:6px;position:relative;}
+.tmpl-violet .rcontact{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;position:relative;}
+.tmpl-violet .rcontact span{font-size:0.77rem;color:rgba(255,255,255,0.75);}
+.tmpl-violet .rbody{padding:28px 48px 44px;}
+.tmpl-violet .rsec-title{color:#7c3aed;display:flex;align-items:center;gap:8px;}
+.tmpl-violet .rsec-title::after{content:'';flex:1;height:1px;background:#ede9ff;}
+.tmpl-violet .rentry-sub{color:#7c3aed;}
+.tmpl-violet .rskill{background:#f5f0ff;border:1px solid #ddd6fe;color:#7c3aed;border-radius:20px;}
+
+/* GOLD LEAF */
+.tmpl-goldleaf .rh{background:#fff;border-bottom:3px solid #b45309;padding:44px 52px 26px;text-align:center;}
+.tmpl-goldleaf .rname{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:#111;letter-spacing:-0.02em;}
+.tmpl-goldleaf .rtitle{font-size:0.85rem;color:#b45309;margin-top:6px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;}
+.tmpl-goldleaf .rcontact{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:12px;font-size:0.77rem;color:#888;}
+.tmpl-goldleaf .rbody{padding:28px 52px 44px;}
+.tmpl-goldleaf .rsec-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#b45309;display:flex;align-items:center;gap:10px;}
+.tmpl-goldleaf .rsec-title::before,.tmpl-goldleaf .rsec-title::after{content:'';flex:1;height:1px;background:#b45309;opacity:0.3;}
+.tmpl-goldleaf .rentry-sub{color:#b45309;}
+.tmpl-goldleaf .rskill{background:#fef9f0;border:1px solid rgba(180,83,9,0.2);color:#b45309;border-radius:3px;}
+
+/* MINIMAL */
+.tmpl-minimal{background:#fff;}
+.tmpl-minimal .rh{padding:40px 52px 24px;border-bottom:0.5px solid #e0e0e0;}
+.tmpl-minimal .rname{font-size:2rem;font-weight:700;color:#111;letter-spacing:-0.03em;}
+.tmpl-minimal .rtitle{font-size:0.8rem;color:#888;margin-top:5px;font-style:italic;}
+.tmpl-minimal .rcontact{display:flex;gap:16px;margin-top:10px;font-size:0.75rem;color:#aaa;flex-wrap:wrap;}
+.tmpl-minimal .rbody{padding:28px 52px 44px;}
+.tmpl-minimal .rsec-title{color:#555;font-weight:800;letter-spacing:0.1em;border-bottom:0.5px solid #e0e0e0;padding-bottom:4px;}
+.tmpl-minimal .rentry-sub{color:#888;font-style:italic;}
+.tmpl-minimal .rskill{background:#f5f5f5;color:#444;border-radius:10px;border:none;}
+
+/* AZURE (PRO placeholder) */
+.tmpl-azure .rh{background:linear-gradient(120deg,#0369a1,#0ea5e9);padding:36px 44px;}
+.tmpl-azure .rname{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:#fff;letter-spacing:-0.02em;}
+.tmpl-azure .rtitle{font-size:0.8rem;color:rgba(255,255,255,0.7);margin-top:5px;letter-spacing:0.1em;text-transform:uppercase;}
+.tmpl-azure .rcontact{display:flex;gap:16px;margin-top:12px;flex-wrap:wrap;}
+.tmpl-azure .rcontact span{font-size:0.73rem;color:rgba(255,255,255,0.8);}
+.tmpl-azure .rbody{padding:28px 44px 44px;}
+.tmpl-azure .rsec-title{color:#0369a1;border-bottom:2px solid #0369a1;padding-bottom:3px;}
+.tmpl-azure .rentry-sub{color:#0369a1;}
+.tmpl-azure .rskill{background:#e0f2fe;border:1px solid #bae6fd;color:#0369a1;border-radius:4px;}
+
+/* PRO OVERLAY */
+.pro-overlay{position:absolute;inset:0;z-index:3;background:rgba(26,43,74,0.65);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;backdrop-filter:blur(2px);}
+.pro-badge-big{background:var(--gold);color:#fff;font-size:0.75rem;font-weight:800;padding:6px 18px;border-radius:20px;letter-spacing:0.1em;}
+.pro-text{color:#fff;font-size:0.82rem;font-weight:500;}
+
+@media(max-width:700px){
+  .templates-grid{grid-template-columns:1fr;padding:0 16px 48px;}
+  .preview-window{height:300px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">Pure<span>Free</span>CV</a>
+  <a class="nav-btn" href="index.html">Build My CV Free →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>15 Professional <em>Resume Templates</em></h1>
+  <p>See exactly how your CV will look. Every template is fully prefilled with real content so you can choose with confidence.</p>
+  <div class="badge-row">
+    <span class="badge">✓ ATS Optimised</span>
+    <span class="badge">✓ PDF Export</span>
+    <span class="badge">✓ Instant Preview</span>
+    <span class="badge gold">✦ 100% Free</span>
+  </div>
+</div>
+
+<!-- FILTER TABS -->
+<div class="filters">
+  <button class="filter-btn active" onclick="filterTemplates('all',this)">All Templates</button>
+  <button class="filter-btn" onclick="filterTemplates('free',this)">Free</button>
+  <button class="filter-btn" onclick="filterTemplates('simple',this)">Simple</button>
+  <button class="filter-btn" onclick="filterTemplates('modern',this)">Modern</button>
+  <button class="filter-btn" onclick="filterTemplates('creative',this)">Creative</button>
+  <button class="filter-btn" onclick="filterTemplates('pro',this)">⭐ Pro</button>
+</div>
+
+<!-- TEMPLATES GRID -->
+<div class="templates-grid" id="templates-grid">
+
+  <!-- 1. ATS PROFESSIONAL -->
+  <div class="tmpl-card" data-tags="free simple" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-ats">
+        <div class="resume-paper tmpl-ats">
+          <div class="rh">
+            <div class="rname">SARAH MITCHELL</div>
+            <div class="rtitle">Senior Marketing Manager</div>
+            <div class="rcontact">
+              <span>📧 sarah.mitchell@email.com</span>
+              <span>📱 +44 7911 234567</span>
+              <span>📍 London, UK</span>
+              <span>🔗 linkedin.com/in/sarahmitchell</span>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rsummary">Results-driven Marketing Manager with 8+ years driving brand growth across digital and traditional channels. Proven track record of increasing organic traffic by 140% and managing £2M+ annual budgets. Expertise in data-driven campaign strategy and cross-functional team leadership.</div>
+            <div class="rsec">
+              <div class="rsec-title">EXPERIENCE</div>
+              <div class="rentry">
+                <div class="rentry-head"><span class="rentry-title">Senior Marketing Manager</span><span class="rentry-date">Mar 2021 – Present</span></div>
+                <div class="rentry-sub">Unilever · London, UK</div>
+                <div class="rbullet">Led a team of 9 marketers, delivering 3 product launches with £1.2M combined revenue in Year 1</div>
+                <div class="rbullet">Increased organic search traffic by 140% through SEO overhaul and content strategy redesign</div>
+                <div class="rbullet">Managed £2.3M annual marketing budget with 22% cost efficiency improvement</div>
+              </div>
+              <div class="rentry">
+                <div class="rentry-head"><span class="rentry-title">Marketing Manager</span><span class="rentry-date">Jan 2018 – Feb 2021</span></div>
+                <div class="rentry-sub">ASOS · London, UK</div>
+                <div class="rbullet">Grew email subscriber base from 180K to 420K with 34% average open rate</div>
+                <div class="rbullet">Launched paid social campaigns achieving 4.8x ROAS across Facebook and Instagram</div>
+              </div>
+              <div class="rentry">
+                <div class="rentry-head"><span class="rentry-title">Digital Marketing Specialist</span><span class="rentry-date">Jun 2016 – Dec 2017</span></div>
+                <div class="rentry-sub">Ogilvy · London, UK</div>
+                <div class="rbullet">Managed PPC campaigns with monthly budgets up to £80K for FMCG clients</div>
+              </div>
+            </div>
+            <div class="rsec">
+              <div class="rsec-title">EDUCATION</div>
+              <div class="rentry">
+                <div class="rentry-head"><span class="rentry-title">BSc Marketing & Communications</span><span class="rentry-date">2012 – 2016</span></div>
+                <div class="rentry-sub">University of Manchester · First Class Honours</div>
+              </div>
+            </div>
+            <div class="rsec">
+              <div class="rsec-title">SKILLS</div>
+              <div class="rskills">
+                <span class="rskill">SEO / SEM</span><span class="rskill">Google Analytics</span><span class="rskill">HubSpot</span><span class="rskill">Salesforce</span><span class="rskill">Content Strategy</span><span class="rskill">A/B Testing</span><span class="rskill">Team Leadership</span><span class="rskill">Budget Management</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay"></div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">ATS Professional</div><div class="card-tag">✓ ATS Optimised · Clean · Single Column</div></div>
+      <a class="use-btn" href="index.html">Use This →</a>
+    </div>
+  </div>
+
+  <!-- 2. EXECUTIVE -->
+  <div class="tmpl-card" data-tags="free modern" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-exec">
+        <div class="resume-paper tmpl-executive">
+          <div class="rh">
+            <div class="rh-inner">
+              <div class="rh-text">
+                <div class="rname">James Hartley</div>
+                <div class="rtitle">Chief Financial Officer</div>
+              </div>
+            </div>
+            <div class="rcontact-bar">
+              <div class="rcontact-item">📧 james.hartley@email.com</div>
+              <div class="rcontact-item">📱 +44 7700 900123</div>
+              <div class="rcontact-item">📍 City of London</div>
+              <div class="rcontact-item">🔗 linkedin.com/in/jameshartley</div>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rmain">
+              <div class="rsec">
+                <div class="rsec-title">PROFESSIONAL EXPERIENCE</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Chief Financial Officer</span><span class="rentry-date">2019 – Present</span></div>
+                  <div class="rentry-sub">Barclays Investment Banking · London</div>
+                  <div class="rbullet">Oversaw £4.2B portfolio with consistent 18% YoY return</div>
+                  <div class="rbullet">Led financial restructuring saving £38M in operational costs</div>
+                  <div class="rbullet">Managed team of 42 finance professionals across 3 offices</div>
+                </div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">VP Finance</span><span class="rentry-date">2014 – 2019</span></div>
+                  <div class="rentry-sub">HSBC · London</div>
+                  <div class="rbullet">Directed M&A due diligence for 6 acquisitions totalling £900M</div>
+                  <div class="rbullet">Implemented ERP system reducing reporting time by 60%</div>
+                </div>
+              </div>
+              <div class="rsec">
+                <div class="rsec-title">EDUCATION</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">MBA, Finance</span><span class="rentry-date">2010 – 2012</span></div>
+                  <div class="rentry-sub">London Business School · Distinction</div>
+                </div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">BSc Accounting & Finance</span><span class="rentry-date">2006 – 2010</span></div>
+                  <div class="rentry-sub">University of Edinburgh · First Class</div>
+                </div>
+              </div>
+            </div>
+            <div class="rside">
+              <div class="rsec">
+                <div class="rsec-title">SKILLS</div>
+                <div class="rskills" style="flex-direction:column;gap:5px;">
+                  <span class="rskill" style="border-radius:4px;font-size:0.76rem;">Financial Modelling</span>
+                  <span class="rskill" style="border-radius:4px;font-size:0.76rem;">Risk Management</span>
+                  <span class="rskill" style="border-radius:4px;font-size:0.76rem;">M&A Due Diligence</span>
+                  <span class="rskill" style="border-radius:4px;font-size:0.76rem;">SAP / Oracle ERP</span>
+                  <span class="rskill" style="border-radius:4px;font-size:0.76rem;">Board Reporting</span>
+                </div>
+              </div>
+              <div class="rsec">
+                <div class="rsec-title">CERTIFICATIONS</div>
+                <div class="rentry"><div class="rentry-title" style="font-size:0.8rem;">CFA Charterholder</div><div style="font-size:0.72rem;color:#aaa;">CFA Institute · 2013</div></div>
+                <div class="rentry"><div class="rentry-title" style="font-size:0.8rem;">ACA Qualified</div><div style="font-size:0.72rem;color:#aaa;">ICAEW · 2012</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay"></div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Executive</div><div class="card-tag">✓ Two-Column · Professional · Bold Header</div></div>
+      <a class="use-btn" href="index.html">Use This →</a>
+    </div>
+  </div>
+
+  <!-- 3. VELOCITY (Modern) -->
+  <div class="tmpl-card" data-tags="free modern" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-vel">
+        <div class="resume-paper tmpl-velocity">
+          <div class="rh">
+            <div class="rh-inner">
+              <div class="rh-text">
+                <div class="rname">Priya Sharma</div>
+                <div class="rtitle-wrap">
+                  <span class="rtitle-tag">Software Engineer</span>
+                  <span class="rtitle-tag">Full Stack</span>
+                </div>
+                <div class="rcontact">
+                  <span>📧 priya.sharma@email.com</span>
+                  <span>📍 Bangalore, India</span>
+                  <span>🔗 github.com/priyasharma</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rmain">
+              <div class="rsec">
+                <div class="rsec-title">EXPERIENCE</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Senior Software Engineer</span><span class="rentry-date">Aug 2021 – Present</span></div>
+                  <div class="rentry-sub">Google · Bangalore</div>
+                  <div class="rbullet">Built microservices serving 50M+ daily active users with 99.98% uptime</div>
+                  <div class="rbullet">Reduced API latency by 62% through caching and architecture redesign</div>
+                  <div class="rbullet">Mentored 6 junior engineers; 3 promoted within 18 months</div>
+                </div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Software Engineer</span><span class="rentry-date">Jun 2018 – Jul 2021</span></div>
+                  <div class="rentry-sub">Flipkart · Bangalore</div>
+                  <div class="rbullet">Developed checkout flow handling ₹80Cr+ in daily transactions</div>
+                  <div class="rbullet">Implemented CI/CD pipeline reducing deployment time from 4h to 18min</div>
+                </div>
+              </div>
+              <div class="rsec">
+                <div class="rsec-title">EDUCATION</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">B.Tech Computer Science</span><span class="rentry-date">2014 – 2018</span></div>
+                  <div class="rentry-sub">IIT Bombay · CGPA 9.2/10</div>
+                </div>
+              </div>
+            </div>
+            <div class="rside">
+              <div class="rsec">
+                <div class="rsec-title">SKILLS</div>
+                <div class="rskills" style="flex-direction:column;">
+                  <span class="rskill">React / Next.js</span>
+                  <span class="rskill">Node.js / Express</span>
+                  <span class="rskill">Python / Django</span>
+                  <span class="rskill">PostgreSQL / Redis</span>
+                  <span class="rskill">AWS / Docker / K8s</span>
+                  <span class="rskill">System Design</span>
+                </div>
+              </div>
+              <div class="rsec">
+                <div class="rsec-title">ACHIEVEMENTS</div>
+                <div style="font-size:0.77rem;color:#444;margin-bottom:6px;">🏆 Google Engineering Excellence Award 2023</div>
+                <div style="font-size:0.77rem;color:#444;">📝 3 patents filed in distributed systems</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay"></div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Modern</div><div class="card-tag">✓ Tech-Focused · Two-Column · Blue Header</div></div>
+      <a class="use-btn" href="index.html">Use This →</a>
+    </div>
+  </div>
+
+  <!-- 4. CANVAS (Creative) -->
+  <div class="tmpl-card" data-tags="free creative" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-canvas">
+        <div class="resume-paper tmpl-canvas">
+          <div class="rh">
+            <div class="rh-left">
+              <div class="photo-placeholder">👩</div>
+              <div style="font-size:0.6rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:4px;">SKILLS</div>
+              <div class="rskills" style="flex-direction:column;gap:5px;width:100%;">
+                <span class="rskill">Figma / Sketch</span>
+                <span class="rskill">Adobe XD</span>
+                <span class="rskill">Prototyping</span>
+                <span class="rskill">User Research</span>
+                <span class="rskill">Design Systems</span>
+              </div>
+            </div>
+            <div class="rh-right">
+              <div class="rname">Emma Wilson</div>
+              <div class="rtitle">Lead UX Designer</div>
+              <div class="rcontact">
+                <span>📧 emma.wilson@email.com</span>
+                <span>📍 New York, USA</span>
+                <span>🔗 emma-wilson.design</span>
+              </div>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rside">
+              <div class="rsec">
+                <div class="rsec-title">EDUCATION</div>
+                <div class="rentry">
+                  <div class="rentry-title" style="font-size:0.82rem;">BFA Interaction Design</div>
+                  <div class="rentry-sub" style="color:#059669;">Parsons School · 2016</div>
+                </div>
+              </div>
+              <div class="rsec">
+                <div class="rsec-title">AWARDS</div>
+                <div style="font-size:0.77rem;color:#555;margin-bottom:5px;">🏆 Awwwards Site of the Day 2023</div>
+                <div style="font-size:0.77rem;color:#555;">🎖 Webby Award Nominee 2022</div>
+              </div>
+              <div class="rsec">
+                <div class="rsec-title">LANGUAGES</div>
+                <div style="font-size:0.77rem;color:#555;margin-bottom:4px;">English — Native</div>
+                <div style="font-size:0.77rem;color:#555;">Spanish — Fluent</div>
+              </div>
+            </div>
+            <div class="rmain">
+              <div class="rsec">
+                <div class="rsec-title">EXPERIENCE</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Lead UX Designer</span><span class="rentry-date">2020 – Present</span></div>
+                  <div class="rentry-sub">Airbnb · New York</div>
+                  <div class="rbullet">Redesigned host onboarding increasing completion rate by 38%</div>
+                  <div class="rbullet">Led design system used by 120+ engineers across 4 product teams</div>
+                </div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Senior UX Designer</span><span class="rentry-date">2018 – 2020</span></div>
+                  <div class="rentry-sub">Spotify · New York</div>
+                  <div class="rbullet">Redesigned playlist creation flow — 22% increase in user engagement</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay"></div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Creative</div><div class="card-tag">✓ Sidebar Photo · Creative Fields · Green Accent</div></div>
+      <a class="use-btn" href="index.html">Use This →</a>
+    </div>
+  </div>
+
+  <!-- 5. NORDIC (Fresher) -->
+  <div class="tmpl-card" data-tags="free simple" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-nordic">
+        <div class="resume-paper tmpl-nordic">
+          <div class="rh">
+            <div class="rh-text">
+              <div class="rname">Arjun <strong>Mehta</strong></div>
+              <div class="rtitle">B.Tech Graduate · Seeking Software Roles</div>
+              <div class="rcontact">
+                <span>📧 arjun.mehta@gmail.com</span>
+                <span>📱 +91 98765 43210</span>
+                <span>📍 Delhi, India</span>
+                <span>🔗 github.com/arjunmehta</span>
+              </div>
+            </div>
+          </div>
+          <div class="rbody">
+            <div>
+              <div class="rsec">
+                <div class="rsec-title">EDUCATION</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">B.Tech Computer Science & Engineering</span><span class="rentry-date">2020 – 2024</span></div>
+                  <div class="rentry-sub">IIT Delhi · CGPA 8.9 / 10.0</div>
+                  <div class="rbullet">Dean's List all 8 semesters · Best Final Year Project Award</div>
+                </div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Class XII (CBSE)</span><span class="rentry-date">2020</span></div>
+                  <div class="rentry-sub">DPS R.K. Puram · 97.4%</div>
+                </div>
+              </div>
+              <div class="rsec">
+                <div class="rsec-title">INTERNSHIPS</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Software Engineering Intern</span><span class="rentry-date">May – Jul 2023</span></div>
+                  <div class="rentry-sub">Microsoft · Hyderabad</div>
+                  <div class="rbullet">Built internal tool reducing manual reporting effort by 70%</div>
+                  <div class="rbullet">Received Pre-Placement Offer (PPO)</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="rsec">
+                <div class="rsec-title">PROJECTS</div>
+                <div class="rentry">
+                  <div class="rentry-title" style="font-size:0.85rem;">Smart Attendance System</div>
+                  <div class="rentry-sub">Python · OpenCV · Flask</div>
+                  <div class="rbullet">Face recognition system with 97.2% accuracy, deployed for 800 students</div>
+                </div>
+                <div class="rentry">
+                  <div class="rentry-title" style="font-size:0.85rem;">E-Commerce Platform</div>
+                  <div class="rentry-sub">React · Node.js · MongoDB</div>
+                  <div class="rbullet">Full-stack marketplace with payment gateway and real-time inventory</div>
+                </div>
+              </div>
+              <div class="rsec">
+                <div class="rsec-title">SKILLS</div>
+                <div class="rskills">
+                  <span class="rskill">Python</span><span class="rskill">Java</span><span class="rskill">C++</span><span class="rskill">React</span><span class="rskill">Node.js</span><span class="rskill">SQL</span><span class="rskill">Git</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay"></div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Fresher</div><div class="card-tag">✓ Fresh Graduates · Clean Timeline · Two-Column</div></div>
+      <a class="use-btn" href="index.html">Use This →</a>
+    </div>
+  </div>
+
+  <!-- 6. MINIMAL -->
+  <div class="tmpl-card" data-tags="free simple" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-minimal">
+        <div class="resume-paper tmpl-minimal">
+          <div class="rh">
+            <div class="rname">David Chen</div>
+            <div class="rtitle">Data Scientist & ML Engineer</div>
+            <div class="rcontact">
+              <span>david.chen@email.com</span>
+              <span>+1 (415) 555-0192</span>
+              <span>San Francisco, CA</span>
+              <span>kaggle.com/davidchen</span>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rsec">
+              <div class="rsec-title">EXPERIENCE</div>
+              <div class="rentry">
+                <div class="rentry-head"><span class="rentry-title">Senior Data Scientist</span><span class="rentry-date">Jan 2022 – Present</span></div>
+                <div class="rentry-sub">Netflix · Los Gatos, CA</div>
+                <div class="rbullet">Built recommendation engine serving 240M subscribers, increasing watch-time by 14%</div>
+                <div class="rbullet">Developed churn prediction model with 91% accuracy saving $22M annually</div>
+                <div class="rbullet">Led ML platform migration reducing model training time by 55%</div>
+              </div>
+              <div class="rentry">
+                <div class="rentry-head"><span class="rentry-title">Data Scientist</span><span class="rentry-date">Jul 2019 – Dec 2021</span></div>
+                <div class="rentry-sub">Uber · San Francisco, CA</div>
+                <div class="rbullet">Built dynamic pricing model increasing driver utilisation by 18%</div>
+                <div class="rbullet">Designed A/B testing framework used across 14 product teams</div>
+              </div>
+            </div>
+            <div class="rsec">
+              <div class="rsec-title">EDUCATION</div>
+              <div class="rentry">
+                <div class="rentry-head"><span class="rentry-title">MS Computer Science (AI/ML)</span><span class="rentry-date">2017 – 2019</span></div>
+                <div class="rentry-sub">Stanford University · GPA 3.94</div>
+              </div>
+            </div>
+            <div class="rsec">
+              <div class="rsec-title">SKILLS</div>
+              <div class="rskills">
+                <span class="rskill">Python</span><span class="rskill">TensorFlow</span><span class="rskill">PyTorch</span><span class="rskill">SQL</span><span class="rskill">Spark</span><span class="rskill">Tableau</span><span class="rskill">Statistics</span><span class="rskill">NLP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay"></div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Minimal</div><div class="card-tag">✓ Clean & Simple · Timeless · All Industries</div></div>
+      <a class="use-btn" href="index.html">Use This →</a>
+    </div>
+  </div>
+
+  <!-- 7. BOLD -->
+  <div class="tmpl-card" data-tags="free modern" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-bold">
+        <div class="resume-paper tmpl-bold">
+          <div class="rh">
+            <div class="rh-top">
+              <div class="rh-text">
+                <div class="rname">Marcus Johnson</div>
+                <div class="rtitle">Operations Director</div>
+              </div>
+            </div>
+            <div class="rcontact-row">
+              <div class="rcontact-item">📧 marcus.johnson@email.com</div>
+              <div class="rcontact-item">📱 +1 (212) 555-0147</div>
+              <div class="rcontact-item">📍 New York, NY</div>
+              <div class="rcontact-item">🔗 linkedin.com/in/marcusjohnson</div>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rsec">
+              <div class="rsec-title">PROFESSIONAL EXPERIENCE</div>
+              <div class="rentry">
+                <div class="rentry-head"><span class="rentry-title">Operations Director</span><span class="rentry-date">2020 – Present</span></div>
+                <div class="rentry-sub">Amazon · New York, NY</div>
+                <div class="rbullet">Oversaw logistics network of 12 fulfilment centres with 4,200 staff</div>
+                <div class="rbullet">Reduced operational costs by $14M through process automation initiatives</div>
+                <div class="rbullet">Achieved 99.2% on-time delivery rate during peak season (up from 94.1%)</div>
+              </div>
+              <div class="rentry">
+                <div class="rentry-head"><span class="rentry-title">Senior Operations Manager</span><span class="rentry-date">2016 – 2020</span></div>
+                <div class="rentry-sub">FedEx · Newark, NJ</div>
+                <div class="rbullet">Managed 650-person team across 3 distribution hubs</div>
+                <div class="rbullet">Implemented lean manufacturing reducing waste by 28%</div>
+              </div>
+            </div>
+            <div class="rsec">
+              <div class="rsec-title">EDUCATION</div>
+              <div class="rentry">
+                <div class="rentry-head"><span class="rentry-title">MBA Operations Management</span><span class="rentry-date">2014 – 2016</span></div>
+                <div class="rentry-sub">Wharton School, UPenn · Summa Cum Laude</div>
+              </div>
+            </div>
+            <div class="rsec">
+              <div class="rsec-title">SKILLS</div>
+              <div class="rskills">
+                <span class="rskill">Supply Chain</span><span class="rskill">Six Sigma Black Belt</span><span class="rskill">P&L Management</span><span class="rskill">SAP</span><span class="rskill">Lean Operations</span><span class="rskill">Team Leadership</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay"></div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Bold</div><div class="card-tag">✓ Strong Header · Achievements-Focused</div></div>
+      <a class="use-btn" href="index.html">Use This →</a>
+    </div>
+  </div>
+
+  <!-- 8. CORAL -->
+  <div class="tmpl-card" data-tags="free creative" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-coral">
+        <div class="resume-paper tmpl-coral">
+          <div class="rh">
+            <div class="rh-left">
+              <div class="side-label">CONTACT</div>
+              <div class="side-item">📧 sofia@email.com</div>
+              <div class="side-item">📱 +34 612 345 678</div>
+              <div class="side-item">📍 Barcelona, Spain</div>
+              <div style="margin-top:14px;" class="side-label">LANGUAGES</div>
+              <div class="side-item">Spanish — Native</div>
+              <div class="side-item">English — Fluent (C2)</div>
+              <div class="side-item">French — Intermediate</div>
+            </div>
+            <div class="rh-right">
+              <div class="rname">Sofia Rodriguez</div>
+              <div class="rtitle">Brand & Creative Director</div>
+              <div class="rcontact">
+                <span>🔗 sofia-rodriguez.com</span>
+                <span>📸 @sofiadesigns</span>
+              </div>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rside">
+              <div class="rsec">
+                <div class="rsec-title">SKILLS</div>
+                <div class="rskills" style="flex-direction:column;gap:5px;">
+                  <span class="rskill">Brand Strategy</span>
+                  <span class="rskill">Adobe Creative Suite</span>
+                  <span class="rskill">Art Direction</span>
+                  <span class="rskill">Campaign Management</span>
+                  <span class="rskill">Typography</span>
+                </div>
+              </div>
+            </div>
+            <div class="rmain">
+              <div class="rsec">
+                <div class="rsec-title">EXPERIENCE</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Creative Director</span><span class="rentry-date">2019 – Present</span></div>
+                  <div class="rentry-sub">Zara (Inditex) · Barcelona</div>
+                  <div class="rbullet">Directed global brand refresh across 96 markets and 2,200+ stores</div>
+                  <div class="rbullet">Led team of 28 designers, photographers and copywriters</div>
+                </div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Senior Designer</span><span class="rentry-date">2015 – 2019</span></div>
+                  <div class="rentry-sub">Ogilvy · Madrid</div>
+                  <div class="rbullet">Won 4 Cannes Lions for creative campaigns</div>
+                </div>
+              </div>
+              <div class="rsec">
+                <div class="rsec-title">EDUCATION</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">BA Graphic Design</span><span class="rentry-date">2011 – 2015</span></div>
+                  <div class="rentry-sub">Elisava Design School · Barcelona · Honours</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay"></div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Coral</div><div class="card-tag">✓ Sidebar Layout · Creative Fields · Red Accent</div></div>
+      <a class="use-btn" href="index.html">Use This →</a>
+    </div>
+  </div>
+
+  <!-- 9. SLATE -->
+  <div class="tmpl-card" data-tags="free modern" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-slate">
+        <div class="resume-paper tmpl-slate">
+          <div class="rh">
+            <div class="rh-inner">
+              <div class="rh-text">
+                <div class="rname">Ryan O'Connor</div>
+                <div class="rtitle">Cybersecurity Engineer</div>
+                <div class="rcontact">
+                  <span>ryan.oconnor@email.com</span>
+                  <span>+1 (703) 555-0198</span>
+                  <span>Washington D.C.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rmain">
+              <div class="rsec">
+                <div class="rsec-title">EXPERIENCE</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Senior Security Engineer</span><span class="rentry-date">2021 – Present</span></div>
+                  <div class="rentry-sub">CrowdStrike · Remote</div>
+                  <div class="rbullet">Led red-team exercises across Fortune 500 clients identifying critical vulnerabilities</div>
+                  <div class="rbullet">Built threat intelligence platform ingesting 2B+ events/day</div>
+                </div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Security Analyst</span><span class="rentry-date">2018 – 2021</span></div>
+                  <div class="rentry-sub">Booz Allen Hamilton · D.C.</div>
+                  <div class="rbullet">Conducted penetration testing for US federal government agencies</div>
+                </div>
+              </div>
+              <div class="rsec">
+                <div class="rsec-title">EDUCATION</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">MS Information Security</span><span class="rentry-date">2016 – 2018</span></div>
+                  <div class="rentry-sub">Carnegie Mellon University · GPA 3.9</div>
+                </div>
+              </div>
+            </div>
+            <div class="rside">
+              <div class="rsec">
+                <div class="rsec-title">CERTIFICATIONS</div>
+                <div style="font-size:0.78rem;color:#444;margin-bottom:5px;">🔒 CISSP</div>
+                <div style="font-size:0.78rem;color:#444;margin-bottom:5px;">🔒 CEH</div>
+                <div style="font-size:0.78rem;color:#444;margin-bottom:5px;">🔒 OSCP</div>
+                <div style="font-size:0.78rem;color:#444;">🔒 AWS Security</div>
+              </div>
+              <div class="rsec">
+                <div class="rsec-title">SKILLS</div>
+                <div class="rskills" style="flex-direction:column;gap:4px;">
+                  <span class="rskill">Penetration Testing</span>
+                  <span class="rskill">SIEM / SOAR</span>
+                  <span class="rskill">Python / Bash</span>
+                  <span class="rskill">Zero Trust Architecture</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay"></div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Slate</div><div class="card-tag">✓ Dark Gradient Header · Two-Column · Modern</div></div>
+      <a class="use-btn" href="index.html">Use This →</a>
+    </div>
+  </div>
+
+  <!-- 10. MINT -->
+  <div class="tmpl-card" data-tags="free creative" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-mint">
+        <div class="resume-paper tmpl-mint">
+          <div class="rh">
+            <div class="rh-left">
+              <div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.25);border:3px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;font-size:28px;">👨‍⚕️</div>
+              <div style="font-size:0.62rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:6px;">CONTACT</div>
+              <div style="font-size:0.74rem;color:rgba(255,255,255,0.9);text-align:center;">dr.patel@nhs.uk</div>
+              <div style="font-size:0.74rem;color:rgba(255,255,255,0.9);">+44 7811 234567</div>
+              <div style="font-size:0.74rem;color:rgba(255,255,255,0.9);">London, UK</div>
+            </div>
+            <div class="rh-right">
+              <div class="rname">Dr. Ananya Patel</div>
+              <div class="rtitle">Consultant Cardiologist</div>
+              <div class="rcontact">
+                <span>MBBS · MD · MRCP</span>
+                <span>GMC: 7654321</span>
+              </div>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rside">
+              <div class="rsec">
+                <div class="rsec-title">SKILLS</div>
+                <div class="rskills" style="flex-direction:column;">
+                  <span class="rskill">Echocardiography</span>
+                  <span class="rskill">Cardiac Catheterisation</span>
+                  <span class="rskill">Heart Failure Mgmt</span>
+                  <span class="rskill">Clinical Research</span>
+                  <span class="rskill">Team Leadership</span>
+                </div>
+              </div>
+            </div>
+            <div class="rmain">
+              <div class="rsec">
+                <div class="rsec-title">EXPERIENCE</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Consultant Cardiologist</span><span class="rentry-date">2020 – Present</span></div>
+                  <div class="rentry-sub">St. Bartholomew's Hospital · London</div>
+                  <div class="rbullet">Manage caseload of 200+ cardiac patients per month</div>
+                  <div class="rbullet">Published 12 peer-reviewed papers in NEJM and Lancet</div>
+                </div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Cardiology Registrar</span><span class="rentry-date">2015 – 2020</span></div>
+                  <div class="rentry-sub">King's College Hospital · London</div>
+                </div>
+              </div>
+              <div class="rsec">
+                <div class="rsec-title">EDUCATION</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">MD Cardiology</span><span class="rentry-date">2013 – 2015</span></div>
+                  <div class="rentry-sub">University of Oxford · Distinction</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay"></div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Mint</div><div class="card-tag">✓ Teal Sidebar · Healthcare / Medical · Clean</div></div>
+      <a class="use-btn" href="index.html">Use This →</a>
+    </div>
+  </div>
+
+  <!-- 11. VIOLET -->
+  <div class="tmpl-card" data-tags="free creative" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-violet">
+        <div class="resume-paper tmpl-violet">
+          <div class="rh">
+            <div class="rname">Alex Rivera</div>
+            <div class="rtitle">Product Manager · SaaS & Fintech</div>
+            <div class="rcontact">
+              <span>alex.rivera@email.com</span>
+              <span>+1 (628) 555-0134</span>
+              <span>San Francisco, CA</span>
+              <span>alexrivera.pm</span>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rsec">
+              <div class="rsec-title">EXPERIENCE</div>
+              <div class="rentry">
+                <div class="rentry-head" style="display:flex;justify-content:space-between;"><span class="rentry-title">Senior Product Manager</span><span class="rentry-date">2021 – Present</span></div>
+                <div class="rentry-sub">Stripe · San Francisco</div>
+                <div class="rentry-desc">Led end-to-end development of Stripe Checkout v3, increasing conversion rates by 23% and processing an additional $2.1B in annual payment volume. Managed roadmap across 5 engineering squads.</div>
+              </div>
+              <div class="rentry">
+                <div class="rentry-head" style="display:flex;justify-content:space-between;"><span class="rentry-title">Product Manager</span><span class="rentry-date">2018 – 2021</span></div>
+                <div class="rentry-sub">Robinhood · Menlo Park</div>
+                <div class="rentry-desc">Launched Options trading feature to 4M+ users, becoming the #1 most-requested feature. Drove 31% increase in DAU over 6 months post-launch.</div>
+              </div>
+            </div>
+            <div class="rsec">
+              <div class="rsec-title">EDUCATION</div>
+              <div class="rentry">
+                <div class="rentry-head" style="display:flex;justify-content:space-between;"><span class="rentry-title">BS Computer Science + Economics</span><span class="rentry-date">2014 – 2018</span></div>
+                <div class="rentry-sub">UC Berkeley · GPA 3.88</div>
+              </div>
+            </div>
+            <div class="rsec">
+              <div class="rsec-title">SKILLS</div>
+              <div class="rskills">
+                <span class="rskill">Product Strategy</span><span class="rskill">SQL / Analytics</span><span class="rskill">A/B Testing</span><span class="rskill">Figma</span><span class="rskill">Jira</span><span class="rskill">Stakeholder Mgmt</span><span class="rskill">OKR Planning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay"></div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Violet</div><div class="card-tag">✓ Purple Accent · Single Column · Modern Clean</div></div>
+      <a class="use-btn" href="index.html">Use This →</a>
+    </div>
+  </div>
+
+  <!-- 12. GOLD LEAF -->
+  <div class="tmpl-card" data-tags="free modern" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-gold">
+        <div class="resume-paper tmpl-goldleaf">
+          <div class="rh">
+            <div class="rname">Charlotte Beaumont</div>
+            <div class="rtitle">Partner · Corporate Law</div>
+            <div class="rcontact">
+              <span>c.beaumont@chambers.co.uk</span>
+              <span>+44 20 7946 0123</span>
+              <span>London, UK</span>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rsec">
+              <div class="rsec-title">Professional Experience</div>
+              <div class="rentry">
+                <div class="rentry-head" style="display:flex;justify-content:space-between;"><span class="rentry-title">Senior Partner — M&A</span><span class="rentry-date">2017 – Present</span></div>
+                <div class="rentry-sub">Linklaters LLP · London</div>
+                <div class="rentry-desc">Led counsel on £3.4B Vodafone–Three merger. Advised FTSE 100 boards on cross-border M&A transactions across 22 jurisdictions. Recognised by Legal 500 as a Leading Individual in Corporate Law.</div>
+              </div>
+              <div class="rentry">
+                <div class="rentry-head" style="display:flex;justify-content:space-between;"><span class="rentry-title">Associate — Corporate</span><span class="rentry-date">2012 – 2017</span></div>
+                <div class="rentry-sub">Slaughter and May · London</div>
+                <div class="rentry-desc">Advised on £900M private equity transactions and IPO processes for 3 FTSE 250 companies.</div>
+              </div>
+            </div>
+            <div class="rsec">
+              <div class="rsec-title">Education</div>
+              <div class="rentry">
+                <div class="rentry-head" style="display:flex;justify-content:space-between;"><span class="rentry-title">BA Law (Jurisprudence)</span><span class="rentry-date">2007 – 2011</span></div>
+                <div class="rentry-sub">University of Oxford · First Class Honours</div>
+              </div>
+            </div>
+            <div class="rsec">
+              <div class="rsec-title">Expertise</div>
+              <div class="rskills">
+                <span class="rskill">M&A / Private Equity</span><span class="rskill">Corporate Governance</span><span class="rskill">Capital Markets</span><span class="rskill">Joint Ventures</span><span class="rskill">FCA Regulation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay"></div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Gold Leaf</div><div class="card-tag">✓ Luxury · Law / Finance · Centred Header</div></div>
+      <a class="use-btn" href="index.html">Use This →</a>
+    </div>
+  </div>
+
+  <!-- 13. AZURE (PRO) -->
+  <div class="tmpl-card" data-tags="pro modern" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-azure">
+        <div class="resume-paper tmpl-azure">
+          <div class="rh">
+            <div class="rname">Lena Hoffmann</div>
+            <div class="rtitle">Head of Growth · B2B SaaS</div>
+            <div class="rcontact">
+              <span>lena.hoffmann@email.com</span>
+              <span>+49 170 555 0192</span>
+              <span>Berlin, Germany</span>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rsec">
+              <div class="rsec-title">EXPERIENCE</div>
+              <div class="rentry">
+                <div class="rentry-head"><span class="rentry-title">Head of Growth</span><span class="rentry-date">2022 – Present</span></div>
+                <div class="rentry-sub">Personio · Berlin</div>
+                <div class="rbullet">Scaled ARR from €40M to €180M in 24 months through PLG strategy</div>
+                <div class="rbullet">Built and led growth team of 22 across acquisition, activation, retention</div>
+              </div>
+              <div class="rentry">
+                <div class="rentry-head"><span class="rentry-title">Growth Marketing Lead</span><span class="rentry-date">2019 – 2022</span></div>
+                <div class="rentry-sub">Delivery Hero · Berlin</div>
+                <div class="rbullet">Drove 280% increase in MQLs through account-based marketing</div>
+              </div>
+            </div>
+            <div class="rsec">
+              <div class="rsec-title">EDUCATION</div>
+              <div class="rentry">
+                <div class="rentry-head"><span class="rentry-title">MSc Marketing Analytics</span><span class="rentry-date">2015 – 2017</span></div>
+                <div class="rentry-sub">WHU Otto Beisheim School · Distinction</div>
+              </div>
+            </div>
+            <div class="rsec">
+              <div class="rsec-title">SKILLS</div>
+              <div class="rskills">
+                <span class="rskill">PLG Strategy</span><span class="rskill">HubSpot</span><span class="rskill">SQL</span><span class="rskill">Mixpanel</span><span class="rskill">ABM</span><span class="rskill">Team Leadership</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay">
+        <div class="pro-badge-big">⭐ PRO TEMPLATE</div>
+        <div class="pro-text">Unlock with PureFreeCV Pro</div>
+        <a class="use-btn" href="index.html" style="margin-top:6px;">Get Pro →</a>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Azure</div><div class="card-tag pro">⭐ PRO · Blue Gradient · Premium Layout</div></div>
+      <a class="use-btn" href="index.html" style="background:var(--gold);">Get Pro →</a>
+    </div>
+  </div>
+
+  <!-- 14. SLATE DARK (PRO) -->
+  <div class="tmpl-card" data-tags="pro modern" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-slate2">
+        <div class="resume-paper tmpl-slate">
+          <div class="rh">
+            <div class="rh-inner">
+              <div class="rh-text">
+                <div class="rname">Kenji Tanaka</div>
+                <div class="rtitle">Quantitative Analyst · Hedge Fund</div>
+                <div class="rcontact">
+                  <span>kenji.tanaka@email.com</span>
+                  <span>+81 90 5555 1234</span>
+                  <span>Tokyo / London</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rmain">
+              <div class="rsec">
+                <div class="rsec-title">EXPERIENCE</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Quantitative Researcher</span><span class="rentry-date">2020 – Present</span></div>
+                  <div class="rentry-sub">Two Sigma · London</div>
+                  <div class="rbullet">Developed statistical arbitrage strategies generating 31% annual alpha</div>
+                  <div class="rbullet">Built ML-driven trading models in Python processing 5TB+ daily</div>
+                </div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">Quantitative Analyst</span><span class="rentry-date">2017 – 2020</span></div>
+                  <div class="rentry-sub">Goldman Sachs · Tokyo</div>
+                  <div class="rbullet">Priced exotic derivatives and structured products for Asia-Pacific desk</div>
+                </div>
+              </div>
+              <div class="rsec">
+                <div class="rsec-title">EDUCATION</div>
+                <div class="rentry">
+                  <div class="rentry-head"><span class="rentry-title">PhD Applied Mathematics</span><span class="rentry-date">2013 – 2017</span></div>
+                  <div class="rentry-sub">University of Tokyo · Summa Cum Laude</div>
+                </div>
+              </div>
+            </div>
+            <div class="rside">
+              <div class="rsec">
+                <div class="rsec-title">SKILLS</div>
+                <div class="rskills" style="flex-direction:column;gap:4px;">
+                  <span class="rskill">Python / C++</span>
+                  <span class="rskill">Machine Learning</span>
+                  <span class="rskill">Stochastic Calculus</span>
+                  <span class="rskill">Bloomberg / Reuters</span>
+                  <span class="rskill">Risk Modelling</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay">
+        <div class="pro-badge-big">⭐ PRO TEMPLATE</div>
+        <div class="pro-text">Unlock with PureFreeCV Pro</div>
+        <a class="use-btn" href="index.html" style="margin-top:6px;">Get Pro →</a>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Slate Pro</div><div class="card-tag pro">⭐ PRO · Dark Gradient · Premium</div></div>
+      <a class="use-btn" href="index.html" style="background:var(--gold);">Get Pro →</a>
+    </div>
+  </div>
+
+  <!-- 15. GOLDLEAF PRO -->
+  <div class="tmpl-card" data-tags="pro creative" onclick="goToBuilder()">
+    <div class="preview-window">
+      <div class="preview-scale" id="scale-gold2">
+        <div class="resume-paper tmpl-goldleaf">
+          <div class="rh">
+            <div class="rname">Isabella Fontaine</div>
+            <div class="rtitle">Chief Executive Officer</div>
+            <div class="rcontact">
+              <span>i.fontaine@company.com</span>
+              <span>+33 6 12 34 56 78</span>
+              <span>Paris, France</span>
+            </div>
+          </div>
+          <div class="rbody">
+            <div class="rsec">
+              <div class="rsec-title">Executive Profile</div>
+              <div class="rentry">
+                <div class="rentry-head" style="display:flex;justify-content:space-between;"><span class="rentry-title">Chief Executive Officer</span><span class="rentry-date">2019 – Present</span></div>
+                <div class="rentry-sub">LVMH Fashion Group · Paris</div>
+                <div class="rentry-desc">Steered portfolio of 12 luxury fashion houses to combined revenue of €8.4B. Led post-pandemic brand repositioning resulting in 44% stock price appreciation. Board member of 3 listed entities.</div>
+              </div>
+              <div class="rentry">
+                <div class="rentry-head" style="display:flex;justify-content:space-between;"><span class="rentry-title">Managing Director</span><span class="rentry-date">2014 – 2019</span></div>
+                <div class="rentry-sub">Kering · Paris</div>
+                <div class="rentry-desc">Led Gucci's digital transformation generating €1.2B in new e-commerce revenue.</div>
+              </div>
+            </div>
+            <div class="rsec">
+              <div class="rsec-title">Education</div>
+              <div class="rentry">
+                <div class="rentry-head" style="display:flex;justify-content:space-between;"><span class="rentry-title">MBA</span><span class="rentry-date">2000 – 2002</span></div>
+                <div class="rentry-sub">INSEAD · Fontainebleau · With Distinction</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-overlay">
+        <div class="pro-badge-big">⭐ PRO TEMPLATE</div>
+        <div class="pro-text">Unlock with PureFreeCV Pro</div>
+        <a class="use-btn" href="index.html" style="margin-top:6px;">Get Pro →</a>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-meta"><div class="card-name">Gold Leaf Pro</div><div class="card-tag pro">⭐ PRO · Luxury · Executive · C-Suite</div></div>
+      <a class="use-btn" href="index.html" style="background:var(--gold);">Get Pro →</a>
+    </div>
+  </div>
+
+</div><!-- end grid -->
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <h2>Ready to Build Your CV?</h2>
+  <p>Choose any free template and have your professional CV ready in minutes — no sign-up required.</p>
+  <a class="cta-btn" href="index.html">Start Building Free →</a>
+</div>
+
+<script>
+// Scale previews to fit the card window
+function scalePreview(scaleEl, windowEl) {
+  var windowW = windowEl.offsetWidth;
+  var scale = windowW / 794;
+  scaleEl.style.transform = 'scale(' + scale + ')';
+  scaleEl.style.height = Math.round(1122 * scale) + 'px'; // not needed but safe
+  windowEl.style.height = Math.round(420) + 'px';
+}
+
+function scaleAll() {
+  var cards = document.querySelectorAll('.tmpl-card');
+  cards.forEach(function(card) {
+    var win = card.querySelector('.preview-window');
+    var scale = card.querySelector('.preview-scale');
+    if (win && scale) scalePreview(scale, win);
+  });
+}
+
+window.addEventListener('load', scaleAll);
+window.addEventListener('resize', scaleAll);
+
+// Filter
+function filterTemplates(tag, btn) {
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.tmpl-card').forEach(function(card) {
+    if (tag === 'all') {
+      card.style.display = '';
+    } else {
+      var tags = card.getAttribute('data-tags') || '';
+      card.style.display = tags.indexOf(tag) !== -1 ? '' : 'none';
+    }
+  });
+}
+
+// Go to builder
+function goToBuilder() {
+  window.location.href = 'index.html';
+}
+</script>
+</body>
+</html>
