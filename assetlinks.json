@@ -1,0 +1,17 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "online.purefreecvmaker.app",
+      "sha256_cert_fingerprints": [
+        "57:1F:D5:63:89:53:59:96:0E:4C:C6:8D:A9:69:68:8F:73:B0:F8:E6:D2:65:B0:73:E1:AF:84:FF:E7:DB:62:93",
+        "50:D1:64:DD:A4:BA:AF:86:F2:47:88:F2:11:6F:84:54:D8:21:E0:5E:91:2E:0A:FD:E5:D2:3A:DF:1E:B0:EB:6D",
+        "A1:BA:00:D4:F4:32:AC:03:EE:5A:74:4B:84:92:42:D9:29:AB:9A:3F:25:B2:03:A8:22:03:9F:EF:F1:9E:85:2E"
+      ]
+    }
+  }
+]
