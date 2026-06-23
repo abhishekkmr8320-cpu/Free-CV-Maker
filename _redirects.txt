@@ -1,0 +1,9 @@
+# Cloudflare Pages _redirects
+# Ensures consistent trailing-slash URLs for SEO
+
+/contact          /contact/          301
+/cookies          /cookies/          301
+/disclaimer       /disclaimer/       301
+/resume-templates /resume-templates/ 301
+/faq              /faq/              301
+/resume-tips      /resume-tips/      301
