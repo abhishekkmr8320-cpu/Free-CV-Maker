@@ -23,6 +23,11 @@
     { "src": "icons/icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
     { "src": "icons/icon-512x512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
+  "screenshots": [
+    { "src": "screenshots/screenshot-home-mobile.png", "sizes": "1080x2289", "type": "image/png", "form_factor": "narrow", "label": "PureFreeCV homepage" },
+    { "src": "screenshots/screenshot-builder.png", "sizes": "1080x2289", "type": "image/png", "form_factor": "narrow", "label": "Resume editor with live ATS score" },
+    { "src": "screenshots/screenshot-home-desktop.png", "sizes": "1080x2133", "type": "image/png", "form_factor": "wide", "label": "PureFreeCV desktop homepage" }
+  ],
   "shortcuts": [
     {
       "name": "Build My CV",
