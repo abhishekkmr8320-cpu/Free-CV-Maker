@@ -1,7 +1,7 @@
-/* ═══════════════════════════════════════════════════
-   PureFreeCV — Service Worker v1.0
+/*
+   PureFreeCV - Service Worker v1.0
    Cache-first strategy for offline CV building
-════════════════════════════════════════════════════ */
+*/
 
 const CACHE_NAME    = 'purefreecv-v1';
 const OFFLINE_URL   = '/';
@@ -15,7 +15,7 @@ const PRECACHE_URLS = [
   '/icons/icon-512x512.png'
 ];
 
-/* ── Install: pre-cache app shell ── */
+/* -- Install: pre-cache app shell -- */
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function(cache) {
@@ -26,7 +26,7 @@ self.addEventListener('install', function(event) {
   );
 });
 
-/* ── Activate: remove old caches ── */
+/* -- Activate: remove old caches -- */
 self.addEventListener('activate', function(event) {
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
@@ -41,7 +41,7 @@ self.addEventListener('activate', function(event) {
   );
 });
 
-/* ── Fetch: cache-first, fallback to network ── */
+/* -- Fetch: cache-first, fallback to network -- */
 self.addEventListener('fetch', function(event) {
   /* Skip non-GET and cross-origin requests */
   if (event.request.method !== 'GET') return;
@@ -59,12 +59,12 @@ self.addEventListener('fetch', function(event) {
             });
           }
           return networkResponse;
-        }).catch(function() { /* Network failed — silence */ });
+        }).catch(function() { /* Network failed - silence */ });
 
         return cachedResponse;
       }
 
-      /* Not in cache — fetch from network and cache it */
+      /* Not in cache - fetch from network and cache it */
       return fetch(event.request).then(function(networkResponse) {
         if (!networkResponse || networkResponse.status !== 200 || networkResponse.type === 'opaque') {
           return networkResponse;
