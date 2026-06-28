@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6999443291371219"
+     crossorigin="anonymous"></script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KFRPX4SJ1B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KFRPX4SJ1B');
+</script>
+
+<title>Edit Existing PDF Online Free | PureFreeCV — No Sign-Up Required</title>
+<meta name="description" content="Edit text in any PDF, add new text, annotate and download — 100% free, no sign-up. Works entirely in your browser. Your file never leaves your device.">
+<meta name="robots" content="index, follow">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96x96.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png">
+<meta name="theme-color" content="#c8900a">
+
+<link rel="canonical" href="https://purefreecv.online/edit-existing-pdf.html">
+
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://purefreecv.online/edit-existing-pdf.html">
+<meta property="og:title"       content="Edit Existing PDF Online Free | PureFreeCV">
+<meta property="og:description" content="Edit text in any PDF, add annotations and download — 100% free. Works in your browser, no sign-up needed.">
+<meta property="og:image"       content="https://purefreecv.online/og-image.jpg">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Edit Existing PDF Online Free | PureFreeCV">
+<meta name="twitter:description" content="Edit text in any PDF, add annotations and download — 100% free. Works in your browser, no sign-up needed.">
+<meta name="twitter:image"       content="https://purefreecv.online/og-image.jpg">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Edit Existing PDF — PureFreeCV",
+  "url": "https://purefreecv.online/edit-existing-pdf.html",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Edit text in any existing PDF, add new text annotations, rotate pages and download — 100% free, browser-based, no sign-up."
+}
+</script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #16a34a;
+  --red:   #dc2626;
+  --blue:  #1d4ed8;
+  --text:  #0f172a;
+  --border: #e2e8f0;
+  --radius: 10px;
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+}
+html, body {
+  height: 100%; width: 100%;
+  font-family: 'Inter', sans-serif;
+  background: #0f172a;
+  overflow: hidden;
+}
+
+/* ── Logo nav-logo-title style (shared with pft-logo) ── */
+.nav-logo-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; font-weight: 900;
+  color: #fff; letter-spacing: -0.015em;
+  cursor: pointer; white-space: nowrap;
+}
+.nav-logo-title span { color: #f59e0b; }
+
+/* ══════════════════════════════════════
+   TOAST
+══════════════════════════════════════ */
+.toast {
+  position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+  background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius);
+  padding: 12px 18px; display: flex; align-items: center; gap: 9px;
+  font-size: 0.84rem; color: var(--text); box-shadow: var(--shadow-lg);
+  transform: translateY(20px); opacity: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none; max-width: 300px;
+}
+.toast.visible { transform: translateY(0); opacity: 1; }
+.toast.success .toast-icon { color: var(--green); }
+.toast.error   .toast-icon { color: var(--red);   }
+.toast.info    .toast-icon { color: var(--blue);  }
+.toast-icon { font-size: 1.1rem; }
+
+/* ══════════════════════════════════════
+   PDF TOOLKIT — Full Page Layout
+══════════════════════════════════════ */
+.pft-page {
+  display: flex; flex-direction: column;
+  position: fixed; inset: 0; z-index: 10;
+  background: #0f172a; overflow: hidden;
+}
+
+/* ── Header ── */
+.pft-header {
+  flex-shrink: 0; z-index: 5; background: #1e293b;
+  border-bottom: 1.5px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center;
+  padding: 5px 8px; gap: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+  flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden;
+  min-height: 44px;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.pft-header::-webkit-scrollbar { display: none; }
+
+.pft-logo { display: flex; align-items: center; flex-shrink: 0; }
+.pft-logo .nav-logo-title {
+  font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 900;
+  color: #fff; letter-spacing: -0.015em; cursor: pointer; white-space: nowrap;
+}
+.pft-logo .nav-logo-title span { color: #f59e0b; }
+
+.pft-header-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.15); flex-shrink: 0; }
+.pft-header-right { display: flex; align-items: center; gap: 4px; flex-wrap: nowrap; flex: 1; min-width: 0; overflow: hidden; }
+.pft-controls { display: flex; align-items: center; gap: 3px; flex-wrap: nowrap; flex: 1; min-width: 0; overflow: hidden; }
+
+.pft-zoom-group {
+  display: flex; align-items: center; gap: 1px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px; padding: 2px 3px; flex-shrink: 0;
+}
+.pft-ctrl-btn {
+  height: 28px; min-width: 24px; padding: 0 5px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: 5px;
+  font-size: 0.78rem; font-weight: 700; color: #fff;
+  cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 2px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.pft-ctrl-btn:active { background: rgba(255,255,255,0.2); }
+.pft-ctrl-fit { font-size: 0.66rem; }
+.pft-ctrl-rotate { color: #93c5fd; border-color: rgba(147,197,253,0.3); }
+.pft-zoom-label { min-width: 30px; text-align: center; font-size: 0.72rem; font-weight: 700; color: #fff; }
+.pft-page-count { font-size: 0.67rem; color: rgba(255,255,255,0.55); font-weight: 600; white-space: nowrap; padding: 0 1px; }
+
+.pft-header-btn {
+  height: 30px; padding: 0 8px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px; color: #fff; font-size: 0.75rem; font-weight: 600;
+  cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 3px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.pft-header-btn:active { background: rgba(255,255,255,0.2); }
+
+.pft-download-btn {
+  height: 34px; padding: 0 14px;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  border: none; border-radius: 8px;
+  color: #fff; font-size: 0.78rem; font-weight: 800;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
+  white-space: nowrap; flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(22,163,74,0.4); letter-spacing: 0.01em;
+}
+.pft-download-btn:hover { background: linear-gradient(135deg, #22c55e, #16a34a); box-shadow: 0 4px 14px rgba(22,163,74,0.5); }
+.pft-download-btn:active { background: #15803d; box-shadow: none; }
+
+.pft-back-btn {
+  height: 32px; padding: 0 14px;
+  background: #f59e0b; border: none; border-radius: 7px;
+  color: #fff; font-size: 0.8rem; font-weight: 700;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 4px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.pft-back-btn:active { background: #d97706; }
+
+.pft-nav-group {
+  display: flex; align-items: center;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px; overflow: hidden; flex-shrink: 0;
+}
+.pft-nav-btn {
+  font-size: 1.1rem; font-weight: 900; width: 32px; height: 32px;
+  color: #fff; background: transparent; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; padding: 0; flex-shrink: 0;
+}
+.pft-nav-btn:active { background: rgba(255,255,255,0.2); }
+.pft-nav-label {
+  min-width: 40px; text-align: center; font-size: 0.72rem; font-weight: 700;
+  color: #fff; border-left: 1px solid rgba(255,255,255,0.2);
+  border-right: 1px solid rgba(255,255,255,0.2); padding: 0 4px; white-space: nowrap;
+}
+
+@media(max-width:640px) {
+  .pft-logo { display: none; }
+  .pft-header-sep { display: none; }
+  .pft-page-count { display: none; }
+  .pft-rotate-label, .pft-back-label, .pft-newfile-label { display: none; }
+  .pft-hide-mobile { display: none !important; }
+}
+
+/* ── Editing toolbar ── */
+.pft-edit-toolbar {
+  flex-shrink: 0; background: #1e293b;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; gap: 0;
+  overflow-x: auto; overflow-y: hidden;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  padding: 0; height: 48px;
+}
+.pft-edit-toolbar::-webkit-scrollbar { display: none; }
+
+.pft-etb-group {
+  display: flex; align-items: center; gap: 0;
+  border-right: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; padding: 0 4px; height: 100%;
+}
+.pft-etb-group:last-child { border-right: none; }
+.pft-etb-label {
+  font-size: 0.58rem; font-weight: 700; color: rgba(255,255,255,0.4);
+  text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 0 4px 0 6px; white-space: nowrap;
+}
+.pft-etb-btn {
+  height: 34px; padding: 0 9px;
+  background: transparent; border: none; border-radius: 6px;
+  font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.85);
+  cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.pft-etb-btn:active { background: rgba(255,255,255,0.1); }
+.pft-etb-btn.active { background: #fef3c7; color: #92400e; font-weight: 700; }
+.pft-etb-btn.active-blue { background: #dbeafe; color: #1d4ed8; font-weight: 700; }
+
+.pft-etb-select {
+  height: 30px; padding: 0 6px;
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 6px;
+  font-size: 0.74rem; color: #fff; background: #334155;
+  cursor: pointer; outline: none; max-width: 90px; flex-shrink: 0;
+}
+.pft-etb-size-group { display: flex; align-items: center; gap: 1px; flex-shrink: 0; }
+.pft-etb-size-btn {
+  height: 28px; width: 24px;
+  background: #334155; border: 1px solid rgba(255,255,255,0.2); border-radius: 5px;
+  font-size: 0.82rem; font-weight: 700; color: #fff;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.pft-etb-size-input {
+  width: 38px; height: 28px; text-align: center;
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 5px;
+  font-size: 0.74rem; font-weight: 700; color: #fff; background: #334155;
+  padding: 0 2px; outline: none;
+}
+.pft-etb-color {
+  width: 28px; height: 28px; border: 1.5px solid rgba(255,255,255,0.25); border-radius: 6px;
+  padding: 2px; cursor: pointer; background: #334155; flex-shrink: 0;
+}
+.pft-etb-style-btn {
+  height: 28px; width: 28px;
+  background: #334155; border: 1px solid rgba(255,255,255,0.2); border-radius: 5px;
+  font-size: 0.82rem; font-weight: 700; color: #fff;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.pft-etb-style-btn.on { background: #f59e0b; border-color: #f59e0b; color: #fff; }
+
+/* ── Body ── */
+.pft-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+/* ── Upload stage ── */
+.pft-upload-stage {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; overflow-y: auto;
+  padding: 0 0 32px; gap: 0; background: #0f172a;
+}
+.pft-upload-hero {
+  width: 100%; background: #1e293b;
+  text-align: center; padding: 28px 20px 24px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.pft-upload-icon { font-size: 2.8rem; line-height: 1; margin-bottom: 10px; }
+.pft-upload-title { font-size: 1.3rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 6px; }
+.pft-upload-sub { font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 500; }
+
+.pft-dropzone {
+  width: calc(100% - 32px); max-width: 440px; margin: 20px 16px 0;
+  border: 2.5px dashed #cbd5e1; border-radius: 16px;
+  background: #fff; cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.pft-dropzone:hover, .pft-dropzone.dragover { border-color: #f59e0b; background: #fffbeb; }
+.pft-dz-inner { display: flex; flex-direction: column; align-items: center; padding: 28px 20px; text-align: center; }
+.pft-dz-title { font-size: 0.95rem; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
+.pft-dz-sub { font-size: 0.76rem; color: #94a3b8; margin-bottom: 16px; }
+.pft-dz-btn {
+  padding: 10px 28px; background: #f59e0b; color: #fff;
+  border: none; border-radius: 8px; font-size: 0.85rem; font-weight: 700;
+  cursor: pointer; pointer-events: none;
+}
+
+.pft-how-to {
+  width: calc(100% - 32px); max-width: 440px; background: #fff;
+  border-radius: 14px; padding: 18px 16px; margin: 16px 16px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.pft-how-title {
+  font-size: 0.72rem; font-weight: 800; color: #1e293b;
+  text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 13px;
+}
+.pft-how-steps { display: flex; flex-direction: column; gap: 10px; }
+.pft-how-step { display: flex; align-items: flex-start; gap: 10px; }
+.pft-how-num {
+  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+  background: #f59e0b; color: #fff; font-size: 0.7rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.pft-how-text { font-size: 0.79rem; color: #475569; line-height: 1.5; }
+.pft-how-text b { color: #1e293b; font-weight: 700; }
+.pft-how-note {
+  margin-top: 13px; padding: 9px 12px;
+  background: #f0fdf4; border-radius: 8px; border: 1px solid #bbf7d0;
+  font-size: 0.73rem; color: #166534; line-height: 1.45;
+}
+
+/* ── Home link banner ── */
+.pft-home-link {
+  width: calc(100% - 32px); max-width: 440px; margin: 16px 16px 0;
+  background: #1e293b; border-radius: 12px; padding: 12px 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.pft-home-link-text { font-size: 0.78rem; color: rgba(255,255,255,0.7); }
+.pft-home-link-text strong { color: #fff; }
+.pft-home-link-btn {
+  white-space: nowrap; padding: 7px 16px;
+  background: #f59e0b; border: none; border-radius: 8px;
+  color: #fff; font-size: 0.78rem; font-weight: 700;
+  cursor: pointer; flex-shrink: 0;
+  text-decoration: none; display: inline-block;
+}
+.pft-home-link-btn:hover { background: #d97706; }
+
+/* ── Loading stage ── */
+.pft-loading-stage {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 16px;
+}
+.pft-spinner {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 3px solid #e2e8f0; border-top-color: #f59e0b;
+  animation: pftspin 0.75s linear infinite;
+}
+@keyframes pftspin { to { transform: rotate(360deg); } }
+.pft-loading-text { font-size: 0.84rem; color: #64748b; font-weight: 600; }
+
+/* ── Viewer stage ── */
+.pft-viewer-stage { flex: 1; display: flex; flex-direction: row; overflow: hidden; min-height: 0; }
+
+.pft-thumb-strip {
+  width: 90px; flex-shrink: 0;
+  background: #1e293b; border-right: 1px solid rgba(255,255,255,0.1);
+  overflow-y: auto; overflow-x: hidden;
+  padding: 8px 6px; display: flex; flex-direction: column; gap: 6px;
+  transition: width 0.2s ease;
+}
+@media(max-width:640px) {
+  .pft-thumb-strip {
+    position: absolute; left: 0; top: 0; bottom: 0; z-index: 8;
+    width: 80px; transform: translateX(-100%);
+    transition: transform 0.22s ease;
+    box-shadow: 4px 0 16px rgba(0,0,0,0.15);
+  }
+  .pft-thumb-strip.open { transform: translateX(0); }
+}
+.pft-thumb {
+  position: relative; cursor: pointer; border-radius: 6px; overflow: hidden;
+  border: 2px solid #e2e8f0; transition: border-color 0.15s, box-shadow 0.15s;
+  flex-shrink: 0; background: #f0f0f0;
+}
+.pft-thumb:hover { border-color: #f59e0b; }
+.pft-thumb.active { border-color: #f59e0b; box-shadow: 0 0 0 2px rgba(245,158,11,0.25); }
+.pft-thumb canvas { display: block; width: 100% !important; height: auto !important; }
+.pft-thumb-num {
+  position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.55); color: #fff;
+  font-size: 0.58rem; font-weight: 700; padding: 1px 5px; border-radius: 8px;
+  pointer-events: none;
+}
+
+.pft-main-view {
+  flex: 1; overflow: auto; display: flex;
+  align-items: flex-start; justify-content: center;
+  padding: 12px; background: #0f172a;
+  min-width: 0; position: relative; min-height: 0;
+}
+.pft-main-view canvas { display: block; max-width: none; }
+@media(max-width:640px) { .pft-main-view { padding: 8px; } }
+
+.pft-thumb-backdrop {
+  display: none; position: absolute; inset: 0; z-index: 7;
+  background: rgba(0,0,0,0.35);
+}
+@media(max-width:640px) { .pft-thumb-backdrop.open { display: block; } }
+
+#pft-canvas-wrap {
+  position: relative; display: inline-block;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  background: #fff; border-radius: 2px;
+}
+#pft-canvas-wrap canvas { display: block; background: transparent; border-radius: 0; max-width: none; }
+#pft-canvas-wrap #pft-canvas { border-radius: 2px; }
+
+#pft-overlay {
+  position: absolute; pointer-events: auto; cursor: crosshair;
+  display: none; z-index: 2;
+}
+#pft-overlay.select-mode { cursor: default; }
+
+.pft-text-inline-input {
+  position: absolute; border: 2px dashed #1d4ed8; border-radius: 4px;
+  background: rgba(255,255,255,0.93); outline: none; padding: 2px 5px;
+  resize: none; overflow: hidden; min-width: 80px; min-height: 26px; z-index: 5;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+#pft-tl-editor {
+  position: absolute; z-index: 6;
+  border: 1.5px solid #1d4ed8; border-radius: 3px;
+  background: rgba(255,255,230,0.97);
+  font-family: inherit; outline: none;
+  padding: 0 3px; box-sizing: border-box; white-space: pre;
+}
+.pft-edit-pdf-btn { display: none; }
+.pft-text-panel  { display: none !important; }
+.pft-annotations-list { display: none; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     EDIT EXISTING PDF — Full Page
+══════════════════════════════════════ -->
+<div class="pft-page">
+
+  <!-- ── Header ── -->
+  <div class="pft-header">
+    <div class="pft-logo" onclick="window.location.href='/'" style="cursor:pointer;">
+      <div class="nav-logo-title"><span>PureFree</span> CV</div>
+    </div>
+    <div class="pft-header-sep"></div>
+    <div class="pft-header-right">
+      <!-- Viewer controls — shown only when PDF loaded -->
+      <div class="pft-controls" id="pft-controls" style="display:none;">
+        <div class="pft-zoom-group">
+          <button class="pft-ctrl-btn" onclick="pftZoom(-15)">−</button>
+          <span class="pft-zoom-label" id="pft-zoom-label">100%</span>
+          <button class="pft-ctrl-btn" onclick="pftZoom(+15)">+</button>
+          <button class="pft-ctrl-btn pft-ctrl-fit" onclick="pftZoomFit()">Fit</button>
+        </div>
+        <button class="pft-ctrl-rotate" onclick="pftRotate()">↻<span class="pft-rotate-label"> Rotate</span></button>
+        <span class="pft-page-count" id="pft-page-count"></span>
+        <button class="pft-header-btn pft-hide-mobile" onclick="pftToggleThumbs()">☰<span class="pft-rotate-label"> Pages</span></button>
+        <button class="pft-header-btn pft-hide-mobile" onclick="pftReset()">↩<span class="pft-newfile-label"> New</span></button>
+      </div>
+      <!-- Page nav -->
+      <div class="pft-nav-group" id="pft-nav-group" style="display:none;">
+        <button class="pft-nav-btn" onclick="pftGoToPage(pftState.currentPage-1)" title="Previous page">‹</button>
+        <span class="pft-nav-label" id="pft-nav-label">1 / 1</span>
+        <button class="pft-nav-btn" onclick="pftGoToPage(pftState.currentPage+1)" title="Next page">›</button>
+      </div>
+      <!-- Download + Back — always visible -->
+      <button class="pft-download-btn" id="pft-download-btn" onclick="pftDownloadPDF()" style="display:none;">↓ Download PDF</button>
+      <button class="pft-back-btn" onclick="pftSmartBack()" id="pft-back-btn">← Back</button>
+    </div>
+  </div>
+
+  <!-- ── Body ── -->
+  <div class="pft-body" id="pft-body">
+
+    <!-- Upload stage -->
+    <div class="pft-upload-stage" id="pft-upload-stage">
+
+      <!-- Hero -->
+      <div class="pft-upload-hero">
+        <div class="pft-upload-icon">📄</div>
+        <div class="pft-upload-title">Edit Existing PDF</div>
+        <div class="pft-upload-sub">Edit text · Add annotations · Download as PDF</div>
+      </div>
+
+      <!-- Drop zone -->
+      <div class="pft-dropzone" id="pft-dropzone"
+           onclick="document.getElementById('pft-file-input').click()"
+           ondragover="event.preventDefault();this.classList.add('dragover')"
+           ondragleave="this.classList.remove('dragover')"
+           ondrop="event.preventDefault();this.classList.remove('dragover');pftHandleFile(event.dataTransfer.files)">
+        <div class="pft-dz-inner">
+          <div style="font-size:2rem;margin-bottom:8px;">☁️</div>
+          <div class="pft-dz-title">Tap to choose a PDF</div>
+          <div class="pft-dz-sub">or drag &amp; drop here</div>
+          <button class="pft-dz-btn">Choose PDF File</button>
+        </div>
+      </div>
+      <input type="file" id="pft-file-input" accept=".pdf,application/pdf" style="display:none;" onchange="pftHandleFile(this.files)">
+
+      <!-- How to use -->
+      <div class="pft-how-to">
+        <div class="pft-how-title">How to use</div>
+        <div class="pft-how-steps">
+          <div class="pft-how-step">
+            <div class="pft-how-num">1</div>
+            <div class="pft-how-text"><b>Upload PDF</b> — tap above or drag &amp; drop your file</div>
+          </div>
+          <div class="pft-how-step">
+            <div class="pft-how-num">2</div>
+            <div class="pft-how-text"><b>📝 Edit Text</b> — tap the button, then tap any word on the PDF to change it</div>
+          </div>
+          <div class="pft-how-step">
+            <div class="pft-how-num">3</div>
+            <div class="pft-how-text"><b>＋ Add Text</b> — tap the button, then tap anywhere on the PDF to place new text</div>
+          </div>
+          <div class="pft-how-step">
+            <div class="pft-how-num">4</div>
+            <div class="pft-how-text"><b>Font / Size / Color / B I U</b> — style your text using the toolbar</div>
+          </div>
+          <div class="pft-how-step">
+            <div class="pft-how-num">5</div>
+            <div class="pft-how-text"><b>⬇ Download</b> — saves a real PDF with all your changes baked in</div>
+          </div>
+        </div>
+        <div class="pft-how-note">🔒 Everything happens in your browser. Your PDF never leaves your device.</div>
+      </div>
+
+      <!-- Back to home banner -->
+      <div class="pft-home-link">
+        <div class="pft-home-link-text">Need to build a CV from scratch? <strong>Try our free CV builder.</strong></div>
+        <a href="/" class="pft-home-link-btn">🏠 CV Builder</a>
+      </div>
+
+    </div>
+
+    <!-- Loading state -->
+    <div class="pft-loading-stage" id="pft-loading-stage" style="display:none;">
+      <div class="pft-spinner"></div>
+      <div class="pft-loading-text" id="pft-loading-text">Reading PDF…</div>
+    </div>
+
+    <!-- Editing toolbar -->
+    <div class="pft-edit-toolbar" id="pft-edit-toolbar" style="display:none;">
+      <div class="pft-etb-group">
+        <button class="pft-etb-btn" id="pft-edit-pdf-text-btn" onclick="pftToggleEditTextMode()">📝 Edit Text</button>
+        <button class="pft-etb-btn" id="pft-add-text-btn"      onclick="pftToggleAddMode()">＋ Add</button>
+        <button class="pft-etb-btn" id="pft-edit-text-btn"     onclick="pftToggleSelectMode()">✏️ Move</button>
+      </div>
+      <div class="pft-etb-group">
+        <span class="pft-etb-label">Font</span>
+        <select class="pft-etb-select" id="pft-font" onchange="pftApplyStyle()">
+          <option value="Arial">Arial</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Times New Roman">Times NR</option>
+          <option value="Courier New">Courier</option>
+          <option value="Verdana">Verdana</option>
+          <option value="Tahoma">Tahoma</option>
+        </select>
+      </div>
+      <div class="pft-etb-group">
+        <span class="pft-etb-label">Size</span>
+        <div class="pft-etb-size-group">
+          <button class="pft-etb-size-btn" onclick="pftChangeSize(-1)">−</button>
+          <input class="pft-etb-size-input" id="pft-size" type="number" value="14" min="6" max="96" onchange="pftApplyStyle()">
+          <button class="pft-etb-size-btn" onclick="pftChangeSize(1)">+</button>
+        </div>
+      </div>
+      <div class="pft-etb-group">
+        <span class="pft-etb-label">Color</span>
+        <input class="pft-etb-color" type="color" id="pft-color" value="#000000" onchange="pftApplyStyleFromColor()">
+        <span id="pft-color-hex" style="font-size:0.65rem;color:rgba(255,255,255,0.5);padding:0 4px;">#000000</span>
+      </div>
+      <div class="pft-etb-group">
+        <span class="pft-etb-label">Style</span>
+        <button class="pft-etb-style-btn" id="pft-bold"      onclick="pftToggleStyleBtn('pft-bold')"><b>B</b></button>
+        <button class="pft-etb-style-btn" id="pft-italic"    onclick="pftToggleStyleBtn('pft-italic')" style="margin:0 2px;"><i>I</i></button>
+        <button class="pft-etb-style-btn" id="pft-underline" onclick="pftToggleStyleBtn('pft-underline')"><u>U</u></button>
+      </div>
+    </div>
+
+    <!-- Viewer stage -->
+    <div class="pft-viewer-stage" id="pft-viewer-stage" style="display:none;">
+
+      <div class="pft-thumb-backdrop" id="pft-thumb-backdrop" onclick="pftToggleThumbs()"></div>
+
+      <div class="pft-thumb-strip" id="pft-thumb-strip">
+        <!-- thumbnails injected by JS -->
+      </div>
+
+      <div class="pft-main-view" id="pft-main-view">
+        <div id="pft-canvas-wrap">
+          <canvas id="pft-canvas"></canvas>
+          <canvas id="pft-overlay"></canvas>
+        </div>
+      </div>
+
+      <!-- Hidden panel kept for JS id references -->
+      <div id="pft-text-panel" style="display:none!important;">
+        <div id="pft-ann-list"><div id="pft-ann-empty"></div></div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span class="toast-icon" id="toast-icon">✓</span>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<!-- ══════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════ -->
+<script>
+/* ── Toast ── */
+function showToast(msg, type) {
+  type = type || 'info';
+  var t = document.getElementById('toast');
+  var icons = { success: '✓', error: '✕', info: 'ℹ' };
+  t.className = 'toast ' + type;
+  document.getElementById('toast-msg').textContent = msg;
+  document.getElementById('toast-icon').textContent = icons[type] || 'ℹ';
+  t.classList.add('visible');
+  setTimeout(function() { t.classList.remove('visible'); }, 3500);
+}
+
+/* ── Navigation ── */
+function pftSmartBack() {
+  var viewerStage = document.getElementById('pft-viewer-stage');
+  var isViewerVisible = viewerStage && viewerStage.style.display !== 'none';
+  if (isViewerVisible && pftState.pdfDoc) {
+    pftReset(); // back to upload stage
+  } else {
+    window.location.href = '/'; // exit to home
+  }
+}
+
+/* ─────────────────────────────────────
+   STATE
+───────────────────────────────────── */
+var pftState = {
+  pdfDoc:      null,
+  totalPages:  0,
+  currentPage: 1,
+  zoom:        100,
+  rotation:    0,
+  rendering:   false,
+  lib:         null,
+  rawBytes:    null,
+  textLayers:  {}
+};
+
+var PFT_PDFJS_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+var PFT_WORKER    = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+var PFT_PDFLIB_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js';
+
+/* ── Load pdf.js on demand ── */
+function pftLoadLib(cb) {
+  if (window.pdfjsLib) { cb(window.pdfjsLib); return; }
+  if (pftState.lib)    { cb(pftState.lib);    return; }
+  var s = document.createElement('script');
+  s.src = PFT_PDFJS_CDN;
+  s.onload = function() {
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc = PFT_WORKER;
+    pftState.lib = window.pdfjsLib;
+    cb(pftState.lib);
+  };
+  s.onerror = function() { showToast('Could not load PDF engine. Check your connection.', 'error'); };
+  document.head.appendChild(s);
+}
+
+/* ── Load pdf-lib on demand ── */
+function pftLoadPdfLib(cb) {
+  if (window.PDFLib) { cb(window.PDFLib); return; }
+  var s = document.createElement('script');
+  s.src = PFT_PDFLIB_CDN;
+  s.onload  = function() { cb(window.PDFLib); };
+  s.onerror = function() { showToast('Could not load pdf-lib. Check your connection.', 'error'); };
+  document.head.appendChild(s);
+}
+
+/* ── File input / drop handler ── */
+function pftHandleFile(files) {
+  if (!files || !files.length) return;
+  var file = files[0];
+  if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+    showToast('Please upload a PDF file.', 'error');
+    return;
+  }
+  if (file.size > 50 * 1024 * 1024) {
+    showToast('File is too large. Max 50 MB.', 'error');
+    return;
+  }
+  pftShowStage('loading');
+  document.getElementById('pft-loading-text').textContent = 'Loading PDF engine…';
+  pftLoadLib(function(lib) {
+    document.getElementById('pft-loading-text').textContent = 'Reading PDF…';
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var arrayBuf = e.target.result;
+      pftState.rawBytes = new Uint8Array(arrayBuf);
+      lib.getDocument({ data: pftState.rawBytes.slice() }).promise
+        .then(function(pdf) {
+          pftState.pdfDoc      = pdf;
+          pftState.totalPages  = pdf.numPages;
+          pftState.currentPage = 1;
+          pftState.zoom        = 100;
+          pftState.rotation    = 0;
+          document.getElementById('pft-page-count').textContent =
+            pdf.numPages + (pdf.numPages === 1 ? ' page' : ' pages');
+          var navLabel = document.getElementById('pft-nav-label');
+          if (navLabel) navLabel.textContent = '1 / ' + pdf.numPages;
+          pftShowStage('viewer');
+          pftBuildThumbs();
+          setTimeout(function() { pftZoomFit(); }, 50);
+        })
+        .catch(function(err) {
+          console.error(err);
+          pftShowStage('upload');
+          showToast('Could not read this PDF. It may be corrupted or password-protected.', 'error');
+        });
+    };
+    reader.onerror = function() { pftShowStage('upload'); showToast('Failed to read file.', 'error'); };
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+/* ── Show stage ── */
+function pftShowStage(stage) {
+  document.getElementById('pft-upload-stage').style.display  = stage === 'upload'  ? 'flex' : 'none';
+  document.getElementById('pft-loading-stage').style.display = stage === 'loading' ? 'flex' : 'none';
+  document.getElementById('pft-viewer-stage').style.display  = stage === 'viewer'  ? 'flex' : 'none';
+  document.getElementById('pft-controls').style.display      = stage === 'viewer'  ? 'flex' : 'none';
+  document.getElementById('pft-edit-toolbar').style.display  = stage === 'viewer'  ? 'flex' : 'none';
+  var dlBtn  = document.getElementById('pft-download-btn');
+  var navGrp = document.getElementById('pft-nav-group');
+  if (dlBtn)  dlBtn.style.display  = stage === 'viewer' ? 'inline-flex' : 'none';
+  if (navGrp) navGrp.style.display = stage === 'viewer' ? 'flex'        : 'none';
+}
+
+/* ── Toggle thumbnail drawer ── */
+function pftToggleThumbs() {
+  var strip    = document.getElementById('pft-thumb-strip');
+  var backdrop = document.getElementById('pft-thumb-backdrop');
+  var isOpen   = strip.classList.contains('open');
+  strip.classList.toggle('open', !isOpen);
+  if (backdrop) backdrop.classList.toggle('open', !isOpen);
+}
+
+/* ── Reset to upload state ── */
+function pftReset() {
+  if (pftState.pdfDoc) { pftState.pdfDoc.destroy(); }
+  pftState.pdfDoc      = null;
+  pftState.totalPages  = 0;
+  pftState.currentPage = 1;
+  pftState.zoom        = 100;
+  pftState.rotation    = 0;
+  pftState.rawBytes    = null;
+  pftState.textLayers  = {};
+  document.getElementById('pft-thumb-strip').innerHTML = '';
+  var ctx = document.getElementById('pft-canvas').getContext('2d');
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  document.getElementById('pft-zoom-label').textContent = '100%';
+  document.getElementById('pft-page-count').textContent = '';
+  document.getElementById('pft-file-input').value = '';
+  pftShowStage('upload');
+}
+
+/* ── Build thumbnail strip ── */
+function pftBuildThumbs() {
+  var strip = document.getElementById('pft-thumb-strip');
+  strip.innerHTML = '';
+  var pdf = pftState.pdfDoc;
+  for (var i = 1; i <= pdf.numPages; i++) {
+    (function(pageNum) {
+      var wrapper = document.createElement('div');
+      wrapper.className = 'pft-thumb' + (pageNum === 1 ? ' active' : '');
+      wrapper.dataset.page = pageNum;
+      wrapper.onclick = function() { pftGoToPage(pageNum); };
+      var tc = document.createElement('canvas');
+      wrapper.appendChild(tc);
+      var numEl = document.createElement('div');
+      numEl.className = 'pft-thumb-num';
+      numEl.textContent = pageNum;
+      wrapper.appendChild(numEl);
+      strip.appendChild(wrapper);
+      pdf.getPage(pageNum).then(function(page) {
+        var vp = page.getViewport({ scale: 0.18 });
+        tc.width  = vp.width;
+        tc.height = vp.height;
+        page.render({ canvasContext: tc.getContext('2d'), viewport: vp });
+      });
+    })(i);
+  }
+}
+
+/* ── Render main canvas ── */
+function pftRenderMain(pageNum) {
+  if (pftState.rendering) return;
+  pftState.rendering   = true;
+  pftState.currentPage = pageNum;
+
+  var navLabel = document.getElementById('pft-nav-label');
+  if (navLabel) navLabel.textContent = pageNum + ' / ' + pftState.totalPages;
+
+  var thumbs = document.getElementById('pft-thumb-strip').querySelectorAll('.pft-thumb');
+  thumbs.forEach(function(t) {
+    t.classList.toggle('active', parseInt(t.dataset.page) === pageNum);
+  });
+  var activeThumb = document.querySelector('.pft-thumb.active');
+  if (activeThumb) activeThumb.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+
+  pftState.pdfDoc.getPage(pageNum).then(function(page) {
+    var scale  = pftState.zoom / 100;
+    var vp     = page.getViewport({ scale: scale, rotation: pftState.rotation });
+    var canvas = document.getElementById('pft-canvas');
+    canvas.width  = vp.width;
+    canvas.height = vp.height;
+
+    page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise.then(function() {
+      pftState.rendering = false;
+
+      /* Extract text content for this page (cache it) */
+      if (!pftState.textLayers[pageNum]) {
+        page.getTextContent().then(function(tc) {
+          var items = tc.items.map(function(item) {
+            if (!item.str || !item.str.trim()) return null;
+            var tx       = vp.convertToViewportPoint(item.transform[4], item.transform[5]);
+            var fontSize = Math.abs(item.transform[3]) * scale;
+            return {
+              str:        item.str,
+              x:          tx[0],
+              y:          tx[1] - fontSize,
+              w:          item.width * scale,
+              h:          fontSize * 1.3,
+              fontSize:   fontSize,
+              fontFamily: (item.fontName || 'Arial').replace(/^[A-Z]+\+/, ''),
+              origStr:    item.str
+            };
+          }).filter(Boolean);
+          pftState.textLayers[pageNum] = items;
+          pftRenderTextLayer(pageNum);
+        });
+      } else {
+        pftRenderTextLayer(pageNum);
+      }
+    });
+  });
+}
+
+/* ── Navigate to page ── */
+function pftGoToPage(n) {
+  if (!pftState.pdfDoc) return;
+  n = Math.max(1, Math.min(pftState.totalPages, n));
+  pftRenderMain(n);
+}
+
+/* ── Zoom ── */
+function pftZoom(delta) {
+  pftState.zoom = Math.max(25, Math.min(300, pftState.zoom + delta));
+  document.getElementById('pft-zoom-label').textContent = pftState.zoom + '%';
+  pftRenderMain(pftState.currentPage);
+}
+
+function pftZoomFit() {
+  if (!pftState.pdfDoc) return;
+  pftState.pdfDoc.getPage(pftState.currentPage).then(function(page) {
+    var vp        = page.getViewport({ scale: 1, rotation: pftState.rotation });
+    var mainView  = document.getElementById('pft-main-view');
+    var available = mainView.clientWidth - (window.innerWidth <= 640 ? 16 : 48);
+    var fit = Math.floor((available / vp.width) * 100);
+    pftState.zoom = Math.max(25, Math.min(300, fit));
+    document.getElementById('pft-zoom-label').textContent = pftState.zoom + '%';
+    pftRenderMain(pftState.currentPage);
+  });
+}
+
+/* ── Rotate ── */
+function pftRotate() {
+  pftState.rotation = (pftState.rotation + 90) % 360;
+  pftRenderMain(pftState.currentPage);
+}
+
+/* ─────────────────────────────────────
+   TEXT LAYER (Edit Existing)
+───────────────────────────────────── */
+
+/* Render interactive HTML text layer over canvas */
+function pftRenderTextLayer(pageNum) {
+  var old = document.getElementById('pft-text-layer');
+  if (old) old.remove();
+
+  var items = pftState.textLayers[pageNum];
+  if (!items || !items.length) return;
+
+  var canvas = document.getElementById('pft-canvas');
+  var wrap   = document.getElementById('pft-canvas-wrap');
+  if (!wrap) return;
+
+  var layer = document.createElement('div');
+  layer.id = 'pft-text-layer';
+  layer.style.cssText = [
+    'position:absolute', 'top:0', 'left:0',
+    'width:'   + canvas.offsetWidth  + 'px',
+    'height:'  + canvas.offsetHeight + 'px',
+    'pointer-events:none',
+    'overflow:hidden',
+    'z-index:3'
+  ].join(';');
+
+  items.forEach(function(item, idx) {
+    var span = document.createElement('div');
+    span.className   = 'pft-tl-item';
+    span.dataset.idx = idx;
+    span.dataset.page = pageNum;
+    span.textContent = item.str;
+    span.style.cssText = [
+      'position:absolute',
+      'left:'        + item.x + 'px',
+      'top:'         + item.y + 'px',
+      'width:'       + Math.max(item.w, 4) + 'px',
+      'height:'      + item.h + 'px',
+      'font-size:'   + item.fontSize + 'px',
+      'line-height:' + item.h + 'px',
+      'white-space:pre',
+      'cursor:text',
+      'color:transparent',
+      'background:transparent',
+      'border:none',
+      'padding:0', 'margin:0',
+      'font-family:inherit',
+      'box-sizing:border-box',
+      'overflow:hidden'
+    ].join(';');
+    span.onclick = function(e) { pftEditTextItem(e, idx, pageNum); };
+    layer.appendChild(span);
+  });
+
+  wrap.appendChild(layer);
+}
+
+/* Called when a text item is clicked in edit-text mode */
+function pftEditTextItem(e, idx, pageNum) {
+  if (!pftTextState.editTextMode) return;
+  e.stopPropagation();
+
+  var items = pftState.textLayers[pageNum];
+  if (!items || !items[idx]) return;
+  var item = items[idx];
+
+  var existing = document.getElementById('pft-tl-editor');
+  if (existing) existing.remove();
+
+  var wrap = document.getElementById('pft-canvas-wrap');
+  var ov   = document.getElementById('pft-overlay');
+  var pc   = document.getElementById('pft-canvas');
+
+  var scaleX = pc.offsetWidth  / (pc.width  || 1);
+  var scaleY = pc.offsetHeight / (pc.height || 1);
+
+  if (ov) {
+    ov.width  = pc.width;
+    ov.height = pc.height;
+    ov.style.width   = pc.offsetWidth  + 'px';
+    ov.style.height  = pc.offsetHeight + 'px';
+    ov.style.position = 'absolute';
+    ov.style.top  = '0';
+    ov.style.left = '0';
+    ov.style.display = 'block';
+    ov.style.pointerEvents = 'none';
+  }
+
+  function drawLivePreview(text) {
+    if (!ov) return;
+    pftRedrawOverlay();
+    var ctx = ov.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(
+      item.x - 2, item.y - 2,
+      Math.max(item.w, ctx.measureText(item.origStr || text).width) + 24,
+      item.h + 4
+    );
+    ctx.font      = item.fontSize + 'px ' + (item.fontFamily || 'Arial');
+    ctx.fillStyle = '#000000';
+    ctx.fillText(text, item.x, item.y + item.fontSize * 0.85);
+    var tw = ctx.measureText(text).width;
+    ctx.strokeStyle = '#1d4ed8';
+    ctx.lineWidth   = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(item.x, item.y + item.h - 1);
+    ctx.lineTo(item.x + Math.max(tw, 20), item.y + item.h - 1);
+    ctx.stroke();
+  }
+
+  var inp = document.createElement('input');
+  inp.type  = 'text';
+  inp.id    = 'pft-tl-editor';
+  inp.value = item.str;
+  inp.style.cssText = [
+    'position:absolute',
+    'left:'        + ((item.x - 2) * scaleX) + 'px',
+    'top:'         + ((item.y - 1) * scaleY) + 'px',
+    'width:'       + (Math.max(item.w + 20, 80) * scaleX) + 'px',
+    'min-width:80px',
+    'height:'      + ((item.h + 2) * scaleY) + 'px',
+    'font-size:'   + (item.fontSize * scaleX) + 'px',
+    'line-height:' + ((item.h + 2) * scaleY) + 'px',
+    'font-family:inherit',
+    'color:#1e293b',
+    'background:rgba(255,255,220,0.96)',
+    'border:2px solid #1d4ed8',
+    'border-radius:3px',
+    'padding:0 3px',
+    'box-sizing:border-box',
+    'outline:none',
+    'z-index:6',
+    'white-space:pre'
+  ].join(';');
+
+  inp.oninput = function() {
+    drawLivePreview(inp.value);
+    var ctx = ov ? ov.getContext('2d') : null;
+    if (ctx) {
+      ctx.font = item.fontSize + 'px ' + (item.fontFamily || 'Arial');
+      var tw = ctx.measureText(inp.value).width;
+      if (tw * scaleX + 20 > parseFloat(inp.style.width)) {
+        inp.style.width = (tw * scaleX + 30) + 'px';
+      }
+    }
+  };
+
+  var commit = function() {
+    var newVal = inp.value;
+    item.str = newVal;
+    if (!pftTextState.liveEdits[pageNum]) pftTextState.liveEdits[pageNum] = [];
+    var edits = pftTextState.liveEdits[pageNum];
+    var existingIdx = edits.findIndex(function(e) { return e.origStr === item.origStr && e.x === item.x && e.y === item.y; });
+    var editEntry = { x: item.x, y: item.y, w: item.w, h: item.h, fontSize: item.fontSize, fontFamily: item.fontFamily || 'Arial', origStr: item.origStr, str: newVal };
+    if (existingIdx >= 0) edits[existingIdx] = editEntry;
+    else edits.push(editEntry);
+    pftRedrawOverlay();
+    var layer = document.getElementById('pft-text-layer');
+    if (layer) {
+      var spans = layer.querySelectorAll('.pft-tl-item');
+      if (spans[idx]) spans[idx].textContent = newVal;
+    }
+    if (ov) ov.style.pointerEvents = 'none';
+    inp.remove();
+  };
+
+  inp.onblur    = commit;
+  inp.onkeydown = function(ev) {
+    if (ev.key === 'Enter' || ev.key === 'Escape') { ev.preventDefault(); inp.blur(); }
+  };
+
+  drawLivePreview(item.str);
+  wrap.appendChild(inp);
+  setTimeout(function() { inp.focus(); inp.select(); }, 30);
+}
+
+/* ── Toggle edit text mode ── */
+function pftToggleEditTextMode() {
+  pftTextState.editTextMode = !pftTextState.editTextMode;
+  var btn   = document.getElementById('pft-edit-pdf-text-btn');
+  var layer = document.getElementById('pft-text-layer');
+  if (pftTextState.editTextMode) {
+    if (btn)   { btn.classList.add('active'); btn.textContent = '✅ Editing'; }
+    if (layer) { layer.style.pointerEvents = 'auto'; }
+    pftHighlightTextLayer(true);
+    var ov = document.getElementById('pft-overlay');
+    var pc = document.getElementById('pft-canvas');
+    if (ov && pc) {
+      ov.width  = pc.width;  ov.height = pc.height;
+      ov.style.width   = pc.offsetWidth  + 'px';
+      ov.style.height  = pc.offsetHeight + 'px';
+      ov.style.position = 'absolute';
+      ov.style.top = '0'; ov.style.left = '0';
+      ov.style.display = 'block';
+      ov.style.pointerEvents = 'none';
+    }
+    showToast('Tap any highlighted text to edit it', 'info');
+  } else {
+    if (btn)   { btn.classList.remove('active'); btn.textContent = '📝 Edit Text'; }
+    if (layer) { layer.style.pointerEvents = 'none'; }
+    pftHighlightTextLayer(false);
+    var ed = document.getElementById('pft-tl-editor');
+    if (ed) ed.remove();
+  }
+}
+
+function pftHighlightTextLayer(on) {
+  var layer = document.getElementById('pft-text-layer');
+  if (!layer) return;
+  layer.querySelectorAll('.pft-tl-item').forEach(function(span) {
+    span.style.background   = on ? 'rgba(253,224,71,0.18)' : 'transparent';
+    span.style.color        = on ? 'rgba(0,0,0,0.55)'      : 'transparent';
+    span.style.outline      = on ? '1px solid rgba(29,78,216,0.25)' : 'none';
+    span.style.borderRadius = on ? '2px' : '0';
+  });
+}
+
+/* ─────────────────────────────────────
+   ANNOTATION ENGINE (Add / Move)
+───────────────────────────────────── */
+var pftTextState = {
+  mode: 'none',
+  annotations: [],
+  selected: null,
+  nextId: 1,
+  dragging: false,
+  dragOffX: 0, dragOffY: 0,
+  lastTap: 0,
+  editTextMode: false,
+  liveEdits: {}
+};
+
+function pftToggleAddMode() {
+  var isAdd = pftTextState.mode === 'add';
+  pftTextState.mode = isAdd ? 'none' : 'add';
+  pftTextState.selected = null;
+  document.getElementById('pft-add-text-btn').classList.toggle('active', !isAdd);
+  document.getElementById('pft-edit-text-btn').classList.remove('active');
+  pftSyncOverlay();
+}
+
+function pftToggleSelectMode() {
+  var isSel = pftTextState.mode === 'select';
+  pftTextState.mode = isSel ? 'none' : 'select';
+  document.getElementById('pft-edit-text-btn').classList.toggle('active', !isSel);
+  document.getElementById('pft-add-text-btn').classList.remove('active');
+  pftSyncOverlay();
+}
+
+function pftGetStyle() {
+  return {
+    font:      document.getElementById('pft-font').value  || 'Arial',
+    size:      parseInt(document.getElementById('pft-size').value) || 14,
+    color:     document.getElementById('pft-color').value || '#000000',
+    bold:      document.getElementById('pft-bold').classList.contains('on'),
+    italic:    document.getElementById('pft-italic').classList.contains('on'),
+    underline: document.getElementById('pft-underline').classList.contains('on')
+  };
+}
+
+function pftApplyStyle() {
+  var colorEl = document.getElementById('pft-color');
+  document.getElementById('pft-color-hex').textContent = colorEl.value;
+  if (pftTextState.selected == null) return;
+  var ann = pftTextState.annotations.find(function(a) { return a.id === pftTextState.selected; });
+  if (!ann) return;
+  var s = pftGetStyle();
+  ann.font = s.font; ann.size = s.size; ann.color = s.color;
+  ann.bold = s.bold; ann.italic = s.italic; ann.underline = s.underline;
+  pftRedrawOverlay();
+}
+
+function pftApplyStyleFromColor() {
+  document.getElementById('pft-color-hex').textContent = document.getElementById('pft-color').value;
+  pftApplyStyle();
+}
+
+function pftToggleStyleBtn(id) {
+  document.getElementById(id).classList.toggle('on');
+  pftApplyStyle();
+}
+
+function pftChangeSize(delta) {
+  var inp = document.getElementById('pft-size');
+  inp.value = Math.max(6, Math.min(96, (parseInt(inp.value) || 14) + delta));
+  pftApplyStyle();
+}
+
+function pftLoadStyleFromAnn(ann) {
+  document.getElementById('pft-font').value  = ann.font  || 'Arial';
+  document.getElementById('pft-size').value  = ann.size  || 14;
+  document.getElementById('pft-color').value = ann.color || '#000000';
+  document.getElementById('pft-color-hex').textContent = ann.color || '#000000';
+  document.getElementById('pft-bold').classList.toggle('on',      !!ann.bold);
+  document.getElementById('pft-italic').classList.toggle('on',    !!ann.italic);
+  document.getElementById('pft-underline').classList.toggle('on', !!ann.underline);
+}
+
+/* ── Overlay sync ── */
+function pftSyncOverlay() {
+  var ov   = document.getElementById('pft-overlay');
+  var pc   = document.getElementById('pft-canvas');
+  if (!ov || !pc) return;
+  ov.width  = pc.width;
+  ov.height = pc.height;
+  var pcW = pc.offsetWidth  || pc.width;
+  var pcH = pc.offsetHeight || pc.height;
+  ov.style.width    = pcW + 'px';
+  ov.style.height   = pcH + 'px';
+  ov.style.position = 'absolute';
+  ov.style.top  = '0';
+  ov.style.left = '0';
+  if (pftTextState.mode === 'none') {
+    ov.style.display = 'none';
+  } else {
+    ov.style.display  = 'block';
+    ov.className = pftTextState.mode === 'select' ? 'select-mode' : '';
+  }
+  pftRedrawOverlay();
+}
+
+/* ── Redraw overlay (annotations + live edits) ── */
+function pftRedrawOverlay() {
+  var ov = document.getElementById('pft-overlay');
+  if (!ov || ov.style.display === 'none') return;
+  var ctx = ov.getContext('2d');
+  ctx.clearRect(0, 0, ov.width, ov.height);
+  var page = pftState.currentPage;
+
+  /* 1. Committed text-layer edits */
+  var edits = pftTextState.liveEdits[page] || [];
+  edits.forEach(function(edit) {
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(edit.x - 2, edit.y - 2, edit.w + 24, edit.h + 4);
+    ctx.font      = edit.fontSize + 'px ' + (edit.fontFamily || 'Arial');
+    ctx.fillStyle = '#000000';
+    ctx.fillText(edit.str, edit.x, edit.y + edit.fontSize * 0.85);
+  });
+
+  /* 2. Add-text annotations */
+  pftTextState.annotations
+    .filter(function(a) { return a.page === page; })
+    .forEach(function(ann) {
+      pftDrawAnnotation(ctx, ann, ann.id === pftTextState.selected);
+    });
+}
+
+function pftBuildFontStr(ann, screenSize) {
+  var sz = screenSize || ann.size || 14;
+  return (ann.italic ? 'italic ' : '') + (ann.bold ? 'bold ' : '') + sz + 'px ' + (ann.font || 'Arial');
+}
+
+function pftDrawAnnotation(ctx, ann, isSelected) {
+  var size = ann.size || 14;
+  ctx.font = pftBuildFontStr(ann);
+  ctx.fillStyle = ann.color || '#000000';
+  var lines = (ann.text || '').split('\n');
+  var lineH = size * 1.35;
+  lines.forEach(function(line, i) {
+    ctx.fillText(line, ann.x, ann.y + i * lineH);
+  });
+  if (ann.underline) {
+    ctx.strokeStyle = ann.color || '#000000';
+    ctx.lineWidth = Math.max(1, size / 14);
+    lines.forEach(function(line, i) {
+      var w  = ctx.measureText(line).width;
+      var uy = ann.y + i * lineH + 2;
+      ctx.beginPath(); ctx.moveTo(ann.x, uy); ctx.lineTo(ann.x + w, uy); ctx.stroke();
+    });
+  }
+  if (isSelected) {
+    ctx.save();
+    ctx.strokeStyle = '#1d4ed8';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 3]);
+    var maxW = Math.max.apply(null, lines.map(function(l) { return ctx.measureText(l).width || 10; }));
+    ctx.strokeRect(ann.x - 4, ann.y - size - 2, maxW + 8, lines.length * lineH + 6);
+    ctx.restore();
+  }
+}
+
+/* ── Annotation list helpers ── */
+function pftRefreshAnnList() {
+  var list  = document.getElementById('pft-ann-list');
+  var empty = document.getElementById('pft-ann-empty');
+  if (!list) return;
+  var page = pftState.currentPage;
+  var anns = pftTextState.annotations.filter(function(a) { return a.page === page; });
+  list.querySelectorAll('.pft-ann-item').forEach(function(el) { el.remove(); });
+  if (!anns.length) { if (empty) empty.style.display = ''; return; }
+  if (empty) empty.style.display = 'none';
+  anns.forEach(function(ann) {
+    var item = document.createElement('div');
+    item.className = 'pft-ann-item' + (ann.id === pftTextState.selected ? ' selected' : '');
+    item.innerHTML =
+      '<span class="pft-ann-text">' + (ann.text || '(empty)').replace(/</g, '&lt;').split('\n')[0] + '</span>' +
+      '<button class="pft-ann-del" onclick="pftDeleteAnn(' + ann.id + ');event.stopPropagation();">✕</button>';
+    item.onclick = function() { pftSelectAnn(ann.id); };
+    list.appendChild(item);
+  });
+}
+
+function pftSelectAnn(id) {
+  pftTextState.selected = id;
+  pftTextState.mode = 'select';
+  document.getElementById('pft-edit-text-btn').classList.add('active');
+  document.getElementById('pft-add-text-btn').classList.remove('active');
+  var ann = pftTextState.annotations.find(function(a) { return a.id === id; });
+  if (ann) pftLoadStyleFromAnn(ann);
+  pftSyncOverlay();
+  pftRefreshAnnList();
+}
+
+function pftDeleteAnn(id) {
+  pftTextState.annotations = pftTextState.annotations.filter(function(a) { return a.id !== id; });
+  if (pftTextState.selected === id) pftTextState.selected = null;
+  pftSyncOverlay();
+  pftRefreshAnnList();
+}
+
+/* ── Inline text editor (textarea over canvas) ── */
+function pftOpenInlineEditor(ann) {
+  var existing = document.getElementById('pft-inline-editor');
+  if (existing) existing.remove();
+  var ov   = document.getElementById('pft-overlay');
+  var wrap = document.getElementById('pft-canvas-wrap');
+  if (!ov || !wrap) return;
+  var scaleX = ov.offsetWidth  / (ov.width  || 1);
+  var scaleY = ov.offsetHeight / (ov.height || 1);
+  var ta = document.createElement('textarea');
+  ta.id = 'pft-inline-editor';
+  ta.className = 'pft-text-inline-input';
+  ta.value = ann.text || '';
+  ta.rows  = 2;
+  ta.style.font  = pftBuildFontStr(ann, (ann.size || 14) * scaleX);
+  ta.style.color = ann.color || '#000000';
+  ta.style.textDecoration = ann.underline ? 'underline' : 'none';
+  ta.style.left = (ann.x * scaleX - 4) + 'px';
+  ta.style.top  = ((ann.y - (ann.size || 14)) * scaleY - 2) + 'px';
+  ta.oninput = function() { ann.text = ta.value; pftRedrawOverlay(); pftRefreshAnnList(); };
+  ta.onblur  = function() {
+    ann.text = ta.value;
+    pftRedrawOverlay(); pftRefreshAnnList();
+    setTimeout(function() { var e = document.getElementById('pft-inline-editor'); if (e) e.remove(); }, 120);
+  };
+  ta.onkeydown = function(e) { if (e.key === 'Escape') ta.blur(); };
+  wrap.appendChild(ta);
+  setTimeout(function() { ta.focus(); }, 50);
+}
+
+/* ── Coordinate conversion ── */
+function pftEventCoords(e) {
+  var ov = document.getElementById('pft-overlay');
+  if (!ov) return { x: 0, y: 0 };
+  var r = ov.getBoundingClientRect();
+  var scaleX = ov.width  / (r.width  || 1);
+  var scaleY = ov.height / (r.height || 1);
+  var cx, cy;
+  if (e.touches && e.touches.length) {
+    cx = e.touches[0].clientX;
+    cy = e.touches[0].clientY;
+  } else {
+    cx = e.clientX;
+    cy = e.clientY;
+  }
+  return { x: (cx - r.left) * scaleX, y: (cy - r.top) * scaleY };
+}
+
+/* ── Hit test ── */
+function pftHitTest(x, y) {
+  var ov  = document.getElementById('pft-overlay');
+  var ctx = ov.getContext('2d');
+  var page = pftState.currentPage;
+  var anns = pftTextState.annotations.filter(function(a) { return a.page === page; });
+  for (var i = anns.length - 1; i >= 0; i--) {
+    var ann = anns[i];
+    var size = ann.size || 14;
+    ctx.font = pftBuildFontStr(ann);
+    var lines = (ann.text || ' ').split('\n');
+    var maxW = Math.max.apply(null, lines.map(function(l) { return ctx.measureText(l).width || 10; }));
+    var h = lines.length * size * 1.35;
+    if (x >= ann.x - 6 && x <= ann.x + maxW + 10 &&
+        y >= ann.y - size - 4 && y <= ann.y + h + 4) {
+      return ann.id;
+    }
+  }
+  return null;
+}
+
+/* ── Pointer events (mouse + touch) ── */
+function pftOnPointerDown(e) {
+  if (pftTextState.mode === 'none') return;
+  e.preventDefault();
+  var coords = pftEventCoords(e);
+  if (pftTextState.mode === 'add') {
+    var s = pftGetStyle();
+    var ann = {
+      id: pftTextState.nextId++,
+      page: pftState.currentPage,
+      x: coords.x, y: coords.y + (s.size || 14),
+      text: '',
+      font: s.font, size: s.size, color: s.color,
+      bold: s.bold, italic: s.italic, underline: s.underline
+    };
+    pftTextState.annotations.push(ann);
+    pftTextState.selected = ann.id;
+    pftTextState.mode = 'select';
+    document.getElementById('pft-add-text-btn').classList.remove('active');
+    document.getElementById('pft-edit-text-btn').classList.add('active');
+    pftSyncOverlay();
+    pftRefreshAnnList();
+    pftOpenInlineEditor(ann);
+    return;
+  }
+  if (pftTextState.mode === 'select') {
+    var now = Date.now();
+    var isDoubleTap = e.touches && (now - pftTextState.lastTap < 350);
+    pftTextState.lastTap = now;
+    var hit = pftHitTest(coords.x, coords.y);
+    if (hit != null) {
+      pftTextState.selected = hit;
+      var hitAnn = pftTextState.annotations.find(function(a) { return a.id === hit; });
+      if (hitAnn) {
+        pftLoadStyleFromAnn(hitAnn);
+        if (isDoubleTap) {
+          pftRedrawOverlay(); pftRefreshAnnList();
+          pftOpenInlineEditor(hitAnn);
+          return;
+        }
+        pftTextState.dragging = true;
+        pftTextState.dragOffX = coords.x - hitAnn.x;
+        pftTextState.dragOffY = coords.y - hitAnn.y;
+      }
+    } else {
+      pftTextState.selected = null;
+    }
+    pftRedrawOverlay();
+    pftRefreshAnnList();
+  }
+}
+
+function pftOnPointerMove(e) {
+  if (!pftTextState.dragging) return;
+  e.preventDefault();
+  var coords = pftEventCoords(e);
+  var ann = pftTextState.annotations.find(function(a) { return a.id === pftTextState.selected; });
+  if (ann) {
+    ann.x = coords.x - pftTextState.dragOffX;
+    ann.y = coords.y - pftTextState.dragOffY;
+    pftRedrawOverlay();
+  }
+}
+
+function pftOnPointerUp() { pftTextState.dragging = false; }
+
+function pftOnDblClick(e) {
+  if (pftTextState.mode !== 'select') return;
+  var coords = pftEventCoords(e);
+  var hit = pftHitTest(coords.x, coords.y);
+  if (hit != null) {
+    var ann = pftTextState.annotations.find(function(a) { return a.id === hit; });
+    if (ann) pftOpenInlineEditor(ann);
+  }
+}
+
+/* ── Bind overlay events ── */
+function pftBindOverlayEvents() {
+  var ov = document.getElementById('pft-overlay');
+  if (!ov || ov._pftBound) return;
+  ov._pftBound = true;
+  ov.addEventListener('mousedown',  pftOnPointerDown);
+  ov.addEventListener('mousemove',  pftOnPointerMove);
+  ov.addEventListener('mouseup',    pftOnPointerUp);
+  ov.addEventListener('mouseleave', pftOnPointerUp);
+  ov.addEventListener('dblclick',   pftOnDblClick);
+  ov.addEventListener('touchstart', pftOnPointerDown, { passive: false });
+  ov.addEventListener('touchmove',  pftOnPointerMove, { passive: false });
+  ov.addEventListener('touchend',   pftOnPointerUp);
+}
+
+/* ── Hook pftRenderMain to rebind overlay after each render ── */
+var _origPftRenderMain = pftRenderMain;
+pftRenderMain = function(pageNum) {
+  var oldTl = document.getElementById('pft-text-layer');
+  if (oldTl) oldTl.remove();
+  _origPftRenderMain(pageNum);
+  setTimeout(function() {
+    pftBindOverlayEvents();
+    if (pftTextState.mode !== 'none') pftSyncOverlay();
+    else pftRedrawOverlay();
+    pftRefreshAnnList();
+    if (pftTextState.editTextMode) pftHighlightTextLayer(true);
+  }, 150);
+};
+
+/* ── Hook pftReset to clear annotation state ── */
+var _origPftReset = pftReset;
+pftReset = function() {
+  _origPftReset();
+  pftTextState.annotations  = [];
+  pftTextState.selected     = null;
+  pftTextState.mode         = 'none';
+  pftTextState.nextId       = 1;
+  pftTextState.dragging     = false;
+  pftTextState.editTextMode = false;
+  pftTextState.liveEdits    = {};
+  var addBtn  = document.getElementById('pft-add-text-btn');
+  var editBtn = document.getElementById('pft-edit-text-btn');
+  var etBtn   = document.getElementById('pft-edit-pdf-text-btn');
+  if (addBtn)  addBtn.classList.remove('active');
+  if (editBtn) editBtn.classList.remove('active');
+  if (etBtn)   { etBtn.classList.remove('active'); etBtn.textContent = '📝 Edit Text'; }
+  var ov = document.getElementById('pft-overlay');
+  if (ov) ov.style.display = 'none';
+  var tl = document.getElementById('pft-text-layer');
+  if (tl) tl.remove();
+  pftRefreshAnnList();
+};
+
+/* ─────────────────────────────────────
+   DOWNLOAD — pdf-lib
+───────────────────────────────────── */
+function pftDownloadPDF() {
+  if (!pftState.rawBytes) { showToast('No PDF loaded.', 'error'); return; }
+
+  var hasEdits = false;
+  var pageNums = Object.keys(pftState.textLayers);
+  pageNums.forEach(function(pn) {
+    var items = pftState.textLayers[pn];
+    if (items) items.forEach(function(it) { if (it.str !== it.origStr) hasEdits = true; });
+  });
+  var hasAnnotations = pftTextState.annotations.length > 0;
+
+  if (!hasEdits && !hasAnnotations) {
+    pftDownloadBlob(pftState.rawBytes, 'edited-pdf.pdf');
+    showToast('PDF downloaded (no changes made).', 'success');
+    return;
+  }
+
+  showToast('Building PDF…', 'info');
+
+  pftLoadPdfLib(function(PDFLib) {
+    PDFLib.PDFDocument.load(pftState.rawBytes.buffer).then(function(pdfDoc) {
+      var pages = pdfDoc.getPages();
+
+      var fontPromises = {};
+      function getFont(style) {
+        var key = (style.bold ? 'b' : '') + (style.italic ? 'i' : '');
+        if (fontPromises[key]) return fontPromises[key];
+        var fontName;
+        if (style.bold && style.italic) fontName = PDFLib.StandardFonts.HelveticaBoldOblique;
+        else if (style.bold)            fontName = PDFLib.StandardFonts.HelveticaBold;
+        else if (style.italic)          fontName = PDFLib.StandardFonts.HelveticaOblique;
+        else                            fontName = PDFLib.StandardFonts.Helvetica;
+        fontPromises[key] = pdfDoc.embedFont(fontName);
+        return fontPromises[key];
+      }
+
+      /* Text-layer edits */
+      var textEditPromises = [];
+      Object.keys(pftState.textLayers).forEach(function(pnStr) {
+        var pn    = parseInt(pnStr);
+        var items = pftState.textLayers[pn];
+        if (!items) return;
+        var page  = pages[pn - 1];
+        if (!page) return;
+        var pdfH  = page.getHeight();
+        var scale = pftState.zoom / 100;
+        items.forEach(function(item) {
+          if (item.str === item.origStr) return;
+          var pdfX    = item.x / scale;
+          var pdfY    = pdfH - (item.y / scale) - (item.h / scale);
+          var pdfSize = item.fontSize / scale;
+          var pdfW    = Math.max(item.w / scale + 10, 20);
+          var p = getFont({ bold: false, italic: false }).then(function(font) {
+            page.drawRectangle({ x: pdfX - 1, y: pdfY - 2, width: pdfW + 4, height: pdfSize + 4, color: PDFLib.rgb(1, 1, 1) });
+            page.drawText(item.str, { x: pdfX, y: pdfY, size: Math.max(pdfSize, 6), font: font, color: PDFLib.rgb(0, 0, 0) });
+          });
+          textEditPromises.push(p);
+        });
+      });
+
+      Promise.all(textEditPromises).then(function() {
+        /* Annotations */
+        var annPromises = pftTextState.annotations.map(function(ann) {
+          var page  = pages[ann.page - 1];
+          if (!page) return Promise.resolve();
+          var pdfH  = page.getHeight();
+          var scale = pftState.zoom / 100;
+          return getFont({ bold: ann.bold, italic: ann.italic }).then(function(font) {
+            var pdfX    = ann.x / scale;
+            var pdfSize = Math.max((ann.size || 14) / scale, 6);
+            var lines   = (ann.text || '').split('\n');
+            var lineH   = pdfSize * 1.35;
+            var hex = (ann.color || '#000000').replace('#', '');
+            var r = parseInt(hex.substring(0, 2), 16) / 255;
+            var g = parseInt(hex.substring(2, 4), 16) / 255;
+            var b = parseInt(hex.substring(4, 6), 16) / 255;
+            var color = PDFLib.rgb(r, g, b);
+            lines.forEach(function(line, li) {
+              if (!line) return;
+              var pdfY = pdfH - (ann.y / scale) - li * lineH;
+              page.drawText(line, { x: pdfX, y: pdfY, size: pdfSize, font: font, color: color });
+              if (ann.underline) {
+                var w = line.length * pdfSize * 0.55;
+                page.drawLine({
+                  start: { x: pdfX,     y: pdfY - 2 },
+                  end:   { x: pdfX + w, y: pdfY - 2 },
+                  thickness: Math.max(0.5, pdfSize / 18),
+                  color: color
+                });
+              }
+            });
+          });
+        });
+
+        Promise.all(annPromises).then(function() {
+          pdfDoc.save().then(function(bytes) {
+            pftDownloadBlob(bytes, 'edited-pdf.pdf');
+            showToast('PDF downloaded with all edits! 🎉', 'success');
+          });
+        });
+      });
+
+    }).catch(function(err) {
+      console.error('pdf-lib error:', err);
+      showToast('Error building PDF. Try again.', 'error');
+    });
+  });
+}
+
+function pftDownloadBlob(bytes, filename) {
+  var blob = new Blob([bytes], { type: 'application/pdf' });
+  var url  = URL.createObjectURL(blob);
+  var a    = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click();
+  setTimeout(function() { URL.revokeObjectURL(url); a.remove(); }, 2000);
+}
+
+/* ── Drag-and-drop on drop zone ── */
+document.addEventListener('DOMContentLoaded', function() {
+  var dz = document.getElementById('pft-dropzone');
+  if (!dz) return;
+  ['dragenter', 'dragover'].forEach(function(evt) {
+    dz.addEventListener(evt, function(e) { e.preventDefault(); dz.classList.add('dragover'); });
+  });
+  ['dragleave', 'drop'].forEach(function(evt) {
+    dz.addEventListener(evt, function(e) { e.preventDefault(); dz.classList.remove('dragover'); });
+  });
+  dz.addEventListener('drop', function(e) {
+    if (e.dataTransfer && e.dataTransfer.files.length) pftHandleFile(e.dataTransfer.files);
+  });
+});
+</script>
+
+</body>
+</html>
