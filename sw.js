@@ -1,7 +1,7 @@
-/*
-   PureFreeCV - Service Worker v1.0
+/* ═══════════════════════════════════════════════════
+   PureFreeCV — Service Worker v1.0
    Cache-first strategy for offline CV building
-*/
+════════════════════════════════════════════════════ */
 
 const CACHE_NAME    = 'purefreecv-v1';
 const OFFLINE_URL   = '/';
@@ -43,14 +43,12 @@ self.addEventListener('activate', function(event) {
 
 /* -- Fetch: cache-first, fallback to network -- */
 self.addEventListener('fetch', function(event) {
-  /* Skip non-GET and cross-origin requests */
   if (event.request.method !== 'GET') return;
   if (!event.request.url.startsWith(self.location.origin)) return;
 
   event.respondWith(
     caches.match(event.request).then(function(cachedResponse) {
       if (cachedResponse) {
-        /* Serve from cache, refresh in background */
         var fetchPromise = fetch(event.request).then(function(networkResponse) {
           if (networkResponse && networkResponse.status === 200) {
             var responseClone = networkResponse.clone();
@@ -64,7 +62,6 @@ self.addEventListener('fetch', function(event) {
         return cachedResponse;
       }
 
-      /* Not in cache - fetch from network and cache it */
       return fetch(event.request).then(function(networkResponse) {
         if (!networkResponse || networkResponse.status !== 200 || networkResponse.type === 'opaque') {
           return networkResponse;
@@ -75,7 +72,6 @@ self.addEventListener('fetch', function(event) {
         });
         return networkResponse;
       }).catch(function() {
-        /* Offline fallback: serve cached index for navigation */
         if (event.request.destination === 'document') {
           return caches.match(OFFLINE_URL);
         }
