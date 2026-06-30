@@ -3,7 +3,7 @@
    Cache-first strategy for offline CV building
 ════════════════════════════════════════════════════ */
 
-const CACHE_NAME    = 'purefreecv-v1';
+const CACHE_NAME    = 'purefreecv-v1.0.0.2';
 const OFFLINE_URL   = '/';
 
 /* Resources to cache on install (app shell) */
